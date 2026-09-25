@@ -1,119 +1,67 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio fotografa lotniczego Iwo Piłucki." />
-    <title>Iwo Piłucki — Fotograf</title>
+    <meta name="theme-color" content="#e9e9e9" />
+    <meta name="description" content="Iwo Piłucki's visual studies of altitude, motion and place." />
+    <title>Iwo Piłucki — Photography</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <nav>
-      <div class="logo">IP</div>
-      <div class="navlinks">
-        <a href="#work">Prace</a>
-        <a href="#about">O mnie</a>
-        <a href="#contact">Kontakt</a>
+    <div class="grid" aria-hidden="true"></div>
+    <header class="header">
+      <a href="#top" class="brand">IWO PIŁUCKI <span>/ PHOTOGRAPHY</span></a>
+      <nav class="nav" id="nav" aria-label="Primary navigation">
+        <a href="#work" data-en="Work" data-pl="Prace">Work</a>
+        <a href="#about" data-en="Journal" data-pl="Dziennik">Journal</a>
+        <a href="#contact" data-en="Contact" data-pl="Kontakt">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="language" type="button" aria-label="Change language">PL</button>
+        <a class="login-trigger" href="login.html" data-en="Client login" data-pl="Logowanie">Client login</a>
+        <a class="contact-link" href="mailto:iwopilucki@icloud.com" data-en="Say hello ↗" data-pl="Napisz ↗">Say hello ↗</a>
+        <button class="menu" type="button" aria-controls="nav" aria-expanded="false" aria-label="Open menu"><i></i><i></i></button>
       </div>
-      <button class="burger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
-
-    <div class="mobile-menu" aria-hidden="true">
-      <a href="#work">Prace</a>
-      <a href="#about">O mnie</a>
-      <a href="#contact">Kontakt</a>
-    </div>
+    </header>
 
     <main>
       <section class="hero" id="top">
-        <div class="container">
-          <p class="eyebrow">Visual Stories</p>
-          <h1>Iwo <em>Piłucki</em></h1>
-          <p>Fotografia lotnicza, krajobrazy i miasta. Każdy kadru to historia o świetle, ruchu i perspektywie z lotu.</p>
-          <div class="hero-actions">
-            <a href="#work" class="btn">Zobacz prace</a>
-            <a href="#contact" class="btn-outline">Skontaktuj się</a>
-          </div>
+        <div class="hero-copy"><p class="hero-kicker" data-en="Photography by Iwo Piłucki" data-pl="Fotografia Iwo Piłuckiego">Photography by Iwo Piłucki</p><h1>Iwo<br /><i>Piłucki</i></h1><p class="hero-description" data-en="Observations of places, light and the quiet details between them." data-pl="Obserwacje miejsc, światła i cichych detali pomiędzy nimi.">Observations of places, light and the quiet details between them.</p></div>
+        <figure class="hero-image"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90" alt="Mountain landscape at sunrise" fetchpriority="high" /><figcaption data-en="Field notes / 2026" data-pl="Notatki z drogi / 2026">Field notes / 2026</figcaption></figure>
+        <div class="hero-foot"><span>52° 13' N / 21° 01' E</span><span data-en="Scroll to enter" data-pl="Przewiń dalej">Scroll to enter</span><span>EST. 2026</span></div>
+      </section>
+
+      <section class="statement" id="about">
+        <div class="section-meta"><span>01</span><span data-en="Journal entry" data-pl="Wpis z dziennika">Journal entry</span><span>IP / 001</span></div>
+        <div class="statement-layout">
+          <p class="statement-note" data-en="Each frame is a record of a split second: geometry, weather, distance and light aligning just once." data-pl="Każdy kadr zapisuje ułamek sekundy: geometrię, pogodę, dystans i światło, które układają się tylko raz.">Each frame is a record of a split second: geometry, weather, distance and light aligning just once.</p>
+          <h2 data-en="I follow the line between <i>where we are</i> and where we are going." data-pl="Szukam linii między <i>miejscem, w którym jesteśmy,</i> a tym, do którego zmierzamy.">I follow the line between <i>where we are</i> and where we are going.</h2>
         </div>
       </section>
 
       <section class="work" id="work">
-        <div class="container">
-          <p class="eyebrow">Portfolio</p>
-          <h2>Wybrane prace</h2>
-          <div class="grid">
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=85" alt="Airplane taking off at dawn" loading="lazy" />
-              <div class="card-info">
-                <h3>Aviation</h3>
-                <p>Lotnictwo</p>
-              </div>
-            </div>
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=85" alt="Mountain landscape at golden hour" loading="lazy" />
-              <div class="card-info">
-                <h3>Landscapes</h3>
-                <p>Krajobrazy</p>
-              </div>
-            </div>
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=85" alt="City skyline at night" loading="lazy" />
-              <div class="card-info">
-                <h3>Cities</h3>
-                <p>Miasta</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="about" id="about">
-        <div class="container">
-          <p class="eyebrow">About</p>
-          <h2>Spojrzenie <em>z lotu</em></h2>
-          <p>Jestem fotografem pasażerskim i entuzjastą lotnictwa. Moje zdjęcia krążą w mediach takich jak: Aviation Week, Air & Space Magazine, a także prywatne kolekcje na całym świecie. Każde zdjęcie to wynik połączenia wiedzy technicznej z pasją do bycia w powietrzu.</p>
-          <div class="about-stats">
-            <div class="stat">
-              <div class="stat-number">15+</div>
-              <div class="stat-label">lat doświadczenia</div>
-            </div>
-            <div class="stat">
-              <div class="stat-number">400+</div>
-              <div class="stat-label">udane misje</div>
-            </div>
-            <div class="stat">
-              <div class="stat-number">25k+</div>
-              <div class="stat-label">obserwujących</div>
-            </div>
-          </div>
+        <div class="section-meta"><span>02</span><span data-en="Selected studies" data-pl="Wybrane studia">Selected studies</span><span>2024 — NOW</span></div>
+        <div class="work-intro"><h2 data-en="Three ways of looking." data-pl="Trzy sposoby patrzenia.">Three ways of looking.</h2><p data-en="A field guide to movement, silence and the human scale." data-pl="Przewodnik po ruchu, ciszy i ludzkiej skali.">A field guide to movement, silence and the human scale.</p></div>
+        <div class="study-grid">
+          <a class="study study--wide" data-category="landscape" href="collection.html?category=landscape"><img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1600&q=90" alt="Foggy mountain valley" loading="lazy" /><span class="study-index">01 / 05</span><h3 data-en="Landscape" data-pl="Krajobraz">Landscape</h3><p data-en="Distance and weather" data-pl="Dystans i pogoda">Distance and weather</p></a>
+          <a class="study" data-category="cities" href="collection.html?category=cities"><img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1000&q=90" alt="Modern city buildings" loading="lazy" /><span class="study-index">02 / 05</span><h3 data-en="Cities" data-pl="Miasta">Cities</h3><p data-en="Structure and rhythm" data-pl="Struktura i rytm">Structure and rhythm</p></a>
+          <a class="study" data-category="details" href="collection.html?category=details"><img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1000&q=90" alt="Leaves in natural light" loading="lazy" /><span class="study-index">03 / 05</span><h3 data-en="Details" data-pl="Detale">Details</h3><p data-en="Small things, closely seen" data-pl="Małe rzeczy, z bliska">Small things, closely seen</p></a>
+          <a class="study" data-category="atmosphere" href="collection.html?category=atmosphere"><img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1000&q=90" alt="Mountain silhouette in fog" loading="lazy" /><span class="study-index">04 / 05</span><h3 data-en="Atmosphere" data-pl="Atmosfera">Atmosphere</h3><p data-en="A change in the air" data-pl="Zmiana w powietrzu">A change in the air</p></a>
+          <a class="study study--aviation" data-category="aviation" href="collection.html?category=aviation"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1000&q=90" alt="Aircraft wing above the clouds" loading="lazy" /><span class="study-index">05 / 05</span><h3 data-en="Aviation" data-pl="Lotnictwo">Aviation</h3><p data-en="One view from above" data-pl="Jedno spojrzenie z góry">One view from above</p></a>
         </div>
       </section>
 
       <section class="contact" id="contact">
-        <div class="container">
-          <p class="eyebrow">Contact</p>
-          <h2>Zaplanuj <em>sesję</em></h2>
-          <p>Masz projekt lotniczy lub kampanię, którą chciałbyś zrealizować ze zdjęciami? Napisz, porozmawiajmy.</p>
-          <a href="mailto:iwopilucki@icloud.com" class="btn">Napisz do mnie</a>
-        </div>
+        <p data-en="Have a project in mind?" data-pl="Masz pomysł na projekt?">Have a project in mind?</p>
+        <h2 data-en="Let’s make<br /><i>an image.</i>" data-pl="Stwórzmy<br /><i>obraz.</i>">Let’s make<br /><i>an image.</i></h2>
+        <a href="mailto:iwopilucki@icloud.com" data-en="iwopilucki@icloud.com ↗" data-pl="iwopilucki@icloud.com ↗">iwopilucki@icloud.com ↗</a>
       </section>
     </main>
-
-    <footer>
-      <div class="container">
-        <p>&copy; 2026 Iwo Piłucki</p>
-        <div class="footer-links">
-          <a href="#">Instagram</a>
-          <a href="#">Behance</a>
-        </div>
-      </div>
-    </footer>
-
-    <script src="script.js"></script>
+    <footer><span>IWO PIŁUCKI / PHOTOGRAPHY</span><span>© 2026</span><a href="#top" data-en="Back to top ↑" data-pl="Na górę ↑">Back to top ↑</a></footer>
   </body>
 </html>

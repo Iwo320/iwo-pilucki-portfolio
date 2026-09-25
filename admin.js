@@ -1,129 +1,92 @@
-const loginPanel = document.querySelector('#login-panel');
-const dashboard = document.querySelector('#dashboard');
-const loginForm = document.querySelector('#login-form');
-const uploadForm = document.querySelector('#upload-form');
-const loginMessage = document.querySelector('#login-message');
-const uploadMessage = document.querySelector('#upload-message');
-const photoInput = document.querySelector('#photo');
-const preview = document.querySelector('#preview');
-const photoList = document.querySelector('#photo-list');
-const photoCount = document.querySelector('.photo-count');
-const publishButton = document.querySelector('.publish-button');
-let previewUrl;
+const uploadForm = document.querySelector('.upload-form');
+const status = document.querySelector('.status');
+const photoList = document.querySelector('.photo-list');
+const logout = document.querySelector('.logout');
 
-function showDashboard(authenticated) {
-  loginPanel.hidden = authenticated;
-  dashboard.hidden = !authenticated;
-  if (authenticated) loadPhotos();
-}
-
-function setMessage(element, message, success = false) {
-  element.textContent = message;
-  element.classList.toggle('success', success);
-}
-
-async function request(url, options = {}) {
-  const response = await fetch(url, options);
-  if (response.status === 204) return null;
-  const result = await response.json();
-  if (!response.ok) throw new Error(result.error || 'Request failed.');
-  return result;
+function renderPhotos(photos) {
+  photoList.replaceChildren();
+  if (!photos.length) {
+    const empty = document.createElement('p');
+    empty.className = 'empty';
+    empty.textContent = 'No uploaded photos yet.';
+    photoList.append(empty);
+    return;
+  }
+  photos.forEach(photo => {
+    const card = document.createElement('div');
+    card.className = 'photo-card';
+    const image = new Image();
+    image.src = photo.url;
+    image.alt = photo.description || `${photo.category} photograph`;
+    image.loading = 'lazy';
+    const label = document.createElement('span');
+    label.className = 'photo-category';
+    label.textContent = photo.category;
+    const caption = document.createElement('p');
+    caption.className = 'photo-description';
+    caption.textContent = photo.description || 'No description yet.';
+    const edit = document.createElement('div');
+    edit.className = 'photo-edit';
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.maxLength = 500;
+    input.value = photo.description || '';
+    input.placeholder = 'Add a description...';
+    input.setAttribute('aria-label', `Description for ${photo.category} photograph`);
+    const save = document.createElement('button');
+    save.type = 'button';
+    save.textContent = 'Save';
+    save.addEventListener('click', async () => {
+      save.disabled = true;
+      try {
+        const response = await fetch(`/api/photos/${photo.id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ description: input.value })
+        });
+        if (!response.ok) throw new Error('save failed');
+        const updated = await response.json();
+        photo.description = updated.description;
+        caption.textContent = updated.description || 'No description yet.';
+        image.alt = updated.description || `${photo.category} photograph`;
+        save.textContent = 'Saved ✓';
+        setTimeout(() => { save.textContent = 'Save'; }, 1500);
+      } catch {
+        save.textContent = 'Retry';
+      } finally {
+        save.disabled = false;
+      }
+    });
+    edit.append(input, save);
+    card.append(image, label, caption, edit);
+    photoList.append(card);
+  });
 }
 
 async function loadPhotos() {
-  try {
-    const photos = await request('/api/photos');
-    photoCount.textContent = `${photos.length} ${photos.length === 1 ? 'frame' : 'frames'}`;
-    if (!photos.length) {
-      photoList.innerHTML = '<p class="empty-library">No photographs published yet.</p>';
-      return;
-    }
-    photoList.replaceChildren(...photos.map((photo) => {
-      const item = document.createElement('article');
-      item.className = 'photo-item';
-      const image = document.createElement('img');
-      image.src = photo.url;
-      image.alt = '';
-      const details = document.createElement('div');
-      const title = document.createElement('strong');
-      title.textContent = photo.title;
-      const meta = document.createElement('span');
-      meta.textContent = [photo.category, photo.year].filter(Boolean).join(' / ');
-      details.append(title, meta);
-      const remove = document.createElement('button');
-      remove.className = 'delete-photo';
-      remove.type = 'button';
-      remove.setAttribute('aria-label', `Delete ${photo.title}`);
-      remove.textContent = '×';
-      remove.addEventListener('click', () => deletePhoto(photo));
-      item.append(image, details, remove);
-      return item;
-    }));
-  } catch (error) {
-    if (error.message === 'Authentication required.') showDashboard(false);
-  }
+  const response = await fetch('/api/photos');
+  renderPhotos(response.ok ? await response.json() : []);
 }
 
-async function deletePhoto(photo) {
-  if (!window.confirm(`Delete “${photo.title}”? This cannot be undone.`)) return;
-  try {
-    await request(`/api/admin/photos/${photo.id}`, { method: 'DELETE' });
-    await loadPhotos();
-  } catch (error) {
-    setMessage(uploadMessage, error.message);
-  }
-}
-
-loginForm.addEventListener('submit', async (event) => {
+uploadForm.addEventListener('submit', async event => {
   event.preventDefault();
-  setMessage(loginMessage, '');
-  const values = Object.fromEntries(new FormData(loginForm));
-  try {
-    await request('/api/admin/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(values)
-    });
-    loginForm.reset();
-    showDashboard(true);
-  } catch (error) {
-    setMessage(loginMessage, error.message);
-  }
-});
-
-photoInput.addEventListener('change', () => {
-  if (previewUrl) URL.revokeObjectURL(previewUrl);
-  const [file] = photoInput.files;
-  if (!file) {
-    preview.hidden = true;
+  status.textContent = 'Uploading photos...';
+  const response = await fetch('/api/photos', { method: 'POST', body: new FormData(uploadForm) });
+  if (!response.ok) {
+    status.textContent = 'Upload failed. Please try again.';
     return;
   }
-  previewUrl = URL.createObjectURL(file);
-  preview.src = previewUrl;
-  preview.hidden = false;
+  uploadForm.reset();
+  status.textContent = 'Photos uploaded to the collection.';
+  loadPhotos();
 });
 
-uploadForm.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  publishButton.disabled = true;
-  setMessage(uploadMessage, 'Uploading…');
-  try {
-    await request('/api/admin/photos', { method: 'POST', body: new FormData(uploadForm) });
-    uploadForm.reset();
-    preview.hidden = true;
-    if (previewUrl) URL.revokeObjectURL(previewUrl);
-    setMessage(uploadMessage, 'Photograph published.', true);
-    await loadPhotos();
-  } catch (error) {
-    setMessage(uploadMessage, error.message);
-  } finally {
-    publishButton.disabled = false;
-  }
+logout.addEventListener('click', async () => {
+  await fetch('/api/logout', { method: 'POST' });
+  window.location.assign('index.html');
 });
 
-document.querySelector('#logout-button').addEventListener('click', async () => {
-  await request('/api/admin/logout', { method: 'POST' });
-  showDashboard(false);
-});
-
-request('/api/admin/session').then(() => showDashboard(true)).catch(() => showDashboard(false));
+fetch('/api/session').then(response => response.json()).then(session => {
+  if (!session.isAdmin) window.location.replace('index.html');
+  else loadPhotos();
+}).catch(() => window.location.replace('index.html'));

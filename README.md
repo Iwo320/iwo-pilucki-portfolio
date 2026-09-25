@@ -1,19 +1,21 @@
 # Iwo Piłucki — Photography Portfolio
 
-Portfolio fotografa specjalizującego się w lotnictwie, krajobrazach i miastach.
+Portfolio z publiczną galerią i prywatnym panelem administratora.
 
-## Lokalnie
+## Uruchomienie
 
-1. Otwórz `index.html` w przeglądarce lub użyj lokalnego serwera: `npx serve .` lub `python3 -m http.server 8000`
-2. Strona dostępna pod adresem `http://localhost:8000`
+1. Zainstaluj zależności: `npm install`
+2. Uruchom aplikację: `npm start`
+3. Otwórz `http://localhost:3000`
 
-## Struktura
+## Panel administratora
 
-- `index.html` — główna strona portfolio
-- `styles.css` — style CSS
-- `script.js` — interakcje JavaScript (menu mobilne)
-- `photos-to-add/` — foldery na zdjęcia do dodania (Aviation, Landscape, City)
+Kliknij `Client login` w nagłówku. Po zalogowaniu strona otworzy osobny panel `admin.html`. Wybierz kategorię i dodaj zdjęcia. Pliki są publikowane w `uploads/`, a dane galerii zapisywane w `data/photos.json`.
 
-## Paleta i styl
+Na stronie głównej kliknięcie kolekcji otwiera pełną galerię w nowej zakładce. Nowe zdjęcia nie zmieniają okładek kolekcji.
 
-Kremowe tło (`#f2efe9`), czerń (`#161513`), złoty akcent (`#b8a888`), fonty Fraunces + Inter. Inspiracja: styl editorialny z animowanymi blobami i glassmorphismem.
+Kategorie: Landscape, Cities, Details, Atmosphere, Aviation.
+
+## Konfiguracja
+
+Ustaw `PORT`, `ADMIN_EMAIL`, `ADMIN_PASSWORD` oraz `SESSION_SECRET` w `.env`. Skopiuj `.env.example`, jeśli plik nie istnieje.

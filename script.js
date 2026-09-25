@@ -1,30 +1,19 @@
-const burger = document.querySelector('.burger');
-const mobileMenu = document.querySelector('.mobile-menu');
+const language = document.querySelector('.language');
+const menu = document.querySelector('.menu');
+const nav = document.querySelector('.nav');
 
-burger?.addEventListener('click', () => {
-  const isOpen = mobileMenu.classList.toggle('open');
-  burger.setAttribute('aria-expanded', String(isOpen));
-  mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-});
-
-mobileMenu?.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-    burger?.setAttribute('aria-expanded', 'false');
-    burger?.setAttribute('aria-label', 'Open menu');
-    mobileMenu.setAttribute('aria-hidden', 'true');
+function setLanguage(locale) {
+  document.documentElement.lang = locale;
+  document.querySelectorAll('[data-en]').forEach(element => {
+    element.innerHTML = element.dataset[locale];
   });
-});
+  language.textContent = locale === 'en' ? 'PL' : 'EN';
+  language.setAttribute('aria-label', locale === 'en' ? 'Zmień język na polski' : 'Change language to English');
+}
 
-document.addEventListener('click', (event) => {
-  if (
-    mobileMenu.classList.contains('open') &&
-    !mobileMenu.contains(event.target) &&
-    !burger?.contains(event.target)
-  ) {
-    mobileMenu.classList.remove('open');
-    burger?.setAttribute('aria-expanded', 'false');
-    burger?.setAttribute('aria-label', 'Open menu');
-    mobileMenu.setAttribute('aria-hidden', 'true');
-  }
+language.addEventListener('click', () => setLanguage(document.documentElement.lang === 'en' ? 'pl' : 'en'));
+menu.addEventListener('click', () => {
+  const isOpen = nav.classList.toggle('is-open');
+  menu.setAttribute('aria-expanded', String(isOpen));
 });
+nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('is-open')));

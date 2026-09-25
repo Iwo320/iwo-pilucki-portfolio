@@ -3,66 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex, nofollow" />
-    <title>Flight Deck | Iwo Piłucki</title>
+    <meta name="robots" content="noindex" />
+    <title>Admin — Iwo Piłucki</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="admin.css" />
+    <script src="admin.js" defer></script>
   </head>
   <body>
-    <header class="admin-header">
-      <a href="/" class="admin-brand"><strong>IP</strong><span>Iwo Piłucki<br />Flight Deck</span></a>
-      <a class="back-link" href="/">View portfolio ↗</a>
-    </header>
-
+    <header><a href="index.html">IWO PIŁUCKI / ADMIN</a><button class="logout" type="button">Log out</button></header>
     <main>
-      <section class="login-panel" id="login-panel">
-        <div class="login-intro">
-          <p class="code">Restricted area / Authentication</p>
-          <h1>Welcome<br />back, <span>Iwo.</span></h1>
-          <p>Sign in to publish and manage photographs in the public archive.</p>
-        </div>
-        <form class="login-form" id="login-form">
-          <label>Email<input type="email" name="email" autocomplete="username" required /></label>
-          <label>Password<input type="password" name="password" autocomplete="current-password" required /></label>
-          <button type="submit">Enter flight deck <span>↗</span></button>
-          <p class="form-message" id="login-message" role="status"></p>
+      <p class="kicker">Private client area</p>
+      <h1>Manage<br /><i>collections.</i></h1>
+      <section class="uploader" aria-labelledby="upload-title">
+        <div><p class="section-number">01</p><h2 id="upload-title">Add photographs</h2></div>
+        <form class="upload-form" enctype="multipart/form-data">
+          <label>Collection<select name="category"><option value="landscape">Landscape</option><option value="cities">Cities</option><option value="details">Details</option><option value="atmosphere">Atmosphere</option><option value="aviation">Aviation</option></select></label>
+          <label>Photos<input name="photos" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple required /></label>
+          <label>Description<span class="hint">One description for all photos in this upload (max 500 characters).</span><textarea name="description" rows="3" maxlength="500" placeholder="e.g. Dawn over the runway, October 2026."></textarea></label>
+          <button type="submit">Upload photos</button>
+          <p class="status" aria-live="polite"></p>
         </form>
       </section>
-
-      <section class="dashboard" id="dashboard" hidden>
-        <div class="dashboard-heading">
-          <div><p class="code">Content control / Online</p><h1>New<br />frame.</h1></div>
-          <button class="logout-button" id="logout-button" type="button">Log out</button>
-        </div>
-
-        <div class="dashboard-grid">
-          <form class="upload-form" id="upload-form">
-            <div class="drop-zone">
-              <input type="file" id="photo" name="photo" accept="image/jpeg,image/png,image/webp,image/avif" required />
-              <div class="drop-copy"><span class="drop-icon">+</span><strong>Choose a photograph</strong><small>JPG, PNG, WebP or AVIF / max 15 MB</small></div>
-              <img id="preview" alt="Selected photograph preview" hidden />
-            </div>
-            <div class="fields">
-              <label>Title<input type="text" name="title" maxlength="100" placeholder="Above the Baltic" required /></label>
-              <label>Alt description<input type="text" name="alt" maxlength="180" placeholder="Aircraft turning above the coastline" required /></label>
-              <label>Category<select name="category" required><option value="Aviation">Aviation</option><option value="Landscape">Landscape</option><option value="City">City</option></select></label>
-              <label>Location<input type="text" name="location" maxlength="80" placeholder="Gdańsk, Poland" /></label>
-              <label>Year<input type="number" name="year" min="1900" max="2100" value="2026" /></label>
-              <label class="home-only-option"><input type="checkbox" name="homeOnly" value="true" /><span>Show on homepage only — keep it out of the series galleries</span></label>
-            </div>
-            <button class="publish-button" type="submit">Publish photograph <span>↗</span></button>
-            <p class="form-message" id="upload-message" role="status"></p>
-          </form>
-
-          <aside class="library">
-            <div class="library-heading"><h2>Published</h2><span class="photo-count">0 frames</span></div>
-            <div class="photo-list" id="photo-list"></div>
-          </aside>
-        </div>
-      </section>
+      <section class="library" aria-labelledby="library-title"><div><p class="section-number">02</p><h2 id="library-title">Current library</h2></div><div class="photo-list"></div></section>
     </main>
-    <script src="admin.js"></script>
   </body>
 </html>
