@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07090c" />
+    <meta name="description" content="Photography series by Iwo Piłucki." />
+    <title>Series | Iwo Piłucki</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="series.css" />
+  </head>
+  <body>
+    <div class="series-transition" aria-hidden="true"><span>Next perspective</span></div>
+    <header class="series-header">
+      <a class="brand" href="/" aria-label="Iwo Piłucki, home"><strong>IP</strong><span>Iwo Piłucki<br />Visual stories</span></a>
+      <nav class="series-nav" aria-label="Photography series">
+        <a href="/series.html?category=Aviation" data-category="Aviation">Aviation</a>
+        <a href="/series.html?category=Landscape" data-category="Landscape">Landscape</a>
+        <a href="/series.html?category=City" data-category="City">City</a>
+      </nav>
+      <div class="header-actions">
+        <button class="language-toggle" type="button" aria-label="Change language"><span class="is-active">EN</span><span>PL</span></button>
+        <a href="/" class="close-link" aria-label="Back to portfolio">×</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="series-hero">
+        <div class="hero-image" role="img"></div>
+        <div class="hero-overlay"></div>
+        <p class="hero-code mono">Series / 01</p>
+        <h1><span class="outline">Mach &amp;</span><span>silence</span></h1>
+        <p class="hero-description">Aircraft become sculpture when speed, light and engineering meet.</p>
+        <a class="scroll-link" href="#gallery"><span data-copy="explore">Explore photographs</span><i>↓</i></a>
+      </section>
+
+      <section class="gallery-section" id="gallery">
+        <div class="gallery-heading">
+          <p class="mono gallery-label">Aviation archive</p>
+          <p class="gallery-intro">A study of machines designed to leave the ground.</p>
+          <span class="photo-total mono">0 photographs</span>
+        </div>
+        <div class="series-gallery" aria-live="polite"></div>
+        <div class="empty-state" hidden>
+          <span class="empty-line"></span>
+          <p data-copy="empty">This series is being prepared.<br />New frames will land here soon.</p>
+        </div>
+      </section>
+
+      <nav class="next-series" aria-label="Next photography series">
+        <span class="mono" data-copy="next">Next series</span>
+        <a href="/series.html?category=Landscape"><span>Landscape</span><b>↗</b></a>
+      </nav>
+    </main>
+
+    <footer><span>© <span id="year">2026</span> Iwo Piłucki</span><a href="mailto:iwopilucki@icloud.com">iwopilucki@icloud.com</a></footer>
+    <script src="series.js"></script>
+  </body>
+</html>
