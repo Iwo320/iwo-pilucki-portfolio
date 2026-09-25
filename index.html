@@ -1,130 +1,117 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Iwo Piłucki photographs aircraft, remote landscapes, and the pulse of cities." />
-    <meta name="theme-color" content="#e9e9e9" />
-    <title>Iwo Piłucki | Aviation & Landscape Photographer</title>
+    <meta name="description" content="Portfolio fotografa lotniczego Iwo Piłucki." />
+    <title>Iwo Piłucki — Fotograf</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;1,6..72,300&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="page-loader" aria-hidden="true"><span>IP</span><i></i></div>
-    <div class="page-transition" aria-hidden="true"><span data-i18n="exploreSeries">Explore the series</span></div>
-
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="Iwo Piłucki, home">
-        <span class="brand-mark">IP</span>
-        <span class="brand-copy">Iwo Piłucki<br /><span data-i18n="visualStories">Visual stories</span></span>
-      </a>
-      <nav class="main-nav" aria-label="Main navigation">
-        <a href="#projects" data-i18n="navProjects">Projects</a>
-        <a href="#profile" data-i18n="navProfile">Profile</a>
-        <a href="#contact" data-i18n="navContact">Contact</a>
-        <a href="/admin" data-i18n="navLogin">Login</a>
-      </nav>
-      <div class="header-tools">
-        <button class="language-toggle" type="button" aria-label="Change language"><span class="is-active">EN</span><span>PL</span></button>
+    <nav>
+      <div class="logo">IP</div>
+      <div class="navlinks">
+        <a href="#work">Prace</a>
+        <a href="#about">O mnie</a>
+        <a href="#contact">Kontakt</a>
       </div>
-      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span>
+      <button class="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
-    </header>
+    </nav>
 
-    <main id="top">
-        <section class="hero" aria-labelledby="hero-title">
-          <img class="hero-photo" src="camera-art.svg" alt="Professional camera" />
-          <div class="hero-shade"></div>
-          <h1 id="hero-title" data-i18n-html="heroTitle"><span>Iwo</span><span>Piłucki</span></h1>
-          <p class="hero-kicker" data-i18n-html="heroKicker">Photography of aviation,<br />landscapes and cities.</p>
-          <a class="hero-scroll" href="#projects">
-            <span data-i18n="enterArchive">Enter the archive</span>
-            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="23"></circle><path d="M24 14v19m-7-7 7 7 7-7"></path></svg>
-          </a>
-        </section>
+    <div class="mobile-menu" aria-hidden="true">
+      <a href="#work">Prace</a>
+      <a href="#about">O mnie</a>
+      <a href="#contact">Kontakt</a>
+    </div>
 
-      <section class="manifesto" id="profile">
-        <p class="section-code mono" data-i18n="pointOfView">Point of view / 01</p>
-        <div class="manifesto-copy">
-          <p data-i18n-html="manifesto">I photograph the split second when scale becomes <em>emotion.</em></p>
-          <div>
-            <span class="mono" data-i18n-html="based">Based in Europe<br />Working worldwide</span>
-            <p data-i18n="bio">From aircraft cutting through cloud layers to cities glowing after dark, my work follows movement, geometry and the human urge to explore.</p>
+    <main>
+      <section class="hero" id="top">
+        <div class="container">
+          <p class="eyebrow">Visual Stories</p>
+          <h1>Iwo <em>Piłucki</em></h1>
+          <p>Fotografia lotnicza, krajobrazy i miasta. Każdy kadru to historia o świetle, ruchu i perspektywie z lotu.</p>
+          <div class="hero-actions">
+            <a href="#work" class="btn">Zobacz prace</a>
+            <a href="#contact" class="btn-outline">Skontaktuj się</a>
           </div>
-        </div>
-        <div class="contact-sheet" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1000&q=88" alt="" />
-          <span class="mono">Light study / 2026</span>
-          <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1000&q=88" alt="" />
         </div>
       </section>
 
-      <section class="projects" id="projects" aria-labelledby="projects-title">
-        <div class="projects-heading">
-          <p class="section-code mono" data-i18n="selectedStories">Selected stories / 02</p>
-          <h2 id="projects-title" data-i18n-html="projectsTitle">Three altitudes.<br /><span>One point of view.</span></h2>
+      <section class="work" id="work">
+        <div class="container">
+          <p class="eyebrow">Portfolio</p>
+          <h2>Wybrane prace</h2>
+          <div class="grid">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=85" alt="Airplane taking off at dawn" loading="lazy" />
+              <div class="card-info">
+                <h3>Aviation</h3>
+                <p>Lotnictwo</p>
+              </div>
+            </div>
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=85" alt="Mountain landscape at golden hour" loading="lazy" />
+              <div class="card-info">
+                <h3>Landscapes</h3>
+                <p>Krajobrazy</p>
+              </div>
+            </div>
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=85" alt="City skyline at night" loading="lazy" />
+              <div class="card-info">
+                <h3>Cities</h3>
+                <p>Miasta</p>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <article class="project project-air">
-          <a class="project-image" href="/series.html?category=Aviation" aria-label="View the aircraft series">
-            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=90" alt="Airplane wing above a sea of clouds at sunset" />
-            <span class="project-index mono">01 / Air</span>
-            <span class="view-project" data-i18n="viewSeries">View series</span>
-          </a>
-          <div class="project-copy">
-            <a class="project-title-link" href="/series.html?category=Aviation"><h3>Mach<br />&amp; silence</h3></a>
-            <p data-i18n="airDescription">Aircraft become sculpture when speed, light and engineering meet.</p>
-            <span class="mono">Aviation / 2022–26</span>
-          </div>
-        </article>
-
-        <article class="project project-earth">
-          <a class="project-image" href="/series.html?category=Landscape" aria-label="View the landscape series">
-            <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1800&q=90" alt="Alpine lake reflecting mountains at dusk" />
-            <span class="project-index mono">02 / Earth</span>
-            <span class="view-project" data-i18n="viewSeries">View series</span>
-          </a>
-          <div class="project-copy">
-            <a class="project-title-link" href="/series.html?category=Landscape"><h3>Where roads<br />disappear</h3></a>
-            <p data-i18n="earthDescription">Remote landscapes stripped down to weather, texture and distance.</p>
-            <span class="mono">Landscape / 2021–26</span>
-          </div>
-        </article>
-
-        <article class="project project-city">
-          <a class="project-image" href="/series.html?category=City" aria-label="View the city series">
-            <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=2000&q=90" alt="City avenue framed by skyscrapers at blue hour" />
-            <span class="project-index mono">03 / City</span>
-            <span class="view-project" data-i18n="viewSeries">View series</span>
-          </a>
-          <div class="project-copy">
-            <a class="project-title-link" href="/series.html?category=City"><h3>Cities</h3></a>
-            <p data-i18n="cityDescription">The restless architecture and accidental poetry of life after sunset.</p>
-            <span class="mono">Urban / 2023–26</span>
-          </div>
-        </article>
       </section>
 
-      <section class="panorama" aria-label="Featured photograph">
-        <div class="panorama-image" role="img" aria-label="Airplane wing viewed above the clouds at dusk"></div>
-        <p>Somewhere<br />between here<br />and elsewhere.</p>
-        <div class="panorama-meta mono"><span>Untitled, Atlantic</span><span>11,278 m</span><span>2025</span></div>
+      <section class="about" id="about">
+        <div class="container">
+          <p class="eyebrow">About</p>
+          <h2>Spojrzenie <em>z lotu</em></h2>
+          <p>Jestem fotografem pasażerskim i entuzjastą lotnictwa. Moje zdjęcia krążą w mediach takich jak: Aviation Week, Air & Space Magazine, a także prywatne kolekcje na całym świecie. Każde zdjęcie to wynik połączenia wiedzy technicznej z pasją do bycia w powietrzu.</p>
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-number">15+</div>
+              <div class="stat-label">lat doświadczenia</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">400+</div>
+              <div class="stat-label">udane misje</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">25k+</div>
+              <div class="stat-label">obserwujących</div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="contact" id="contact">
-        <p class="section-code mono" data-i18n="nextDeparture">Next departure / 03</p>
-        <p class="contact-intro" data-i18n-html="contactIntro">Have a destination,<br />aircraft or story in mind?</p>
-        <a href="mailto:iwopilucki@icloud.com"><span data-i18n="contactCta">Let's make it visible.</span><span>↗</span></a>
+        <div class="container">
+          <p class="eyebrow">Contact</p>
+          <h2>Zaplanuj <em>sesję</em></h2>
+          <p>Masz projekt lotniczy lub kampanię, którą chciałbyś zrealizować ze zdjęciami? Napisz, porozmawiajmy.</p>
+          <a href="mailto:iwopilucki@icloud.com" class="btn">Napisz do mnie</a>
+        </div>
       </section>
     </main>
 
-    <footer class="site-footer mono">
-      <span>© <span id="year">2026</span> Iwo Piłucki</span>
-      <span data-i18n="footerServices">Photography / Direction / Print</span>
-      <div><a href="#top">Instagram</a><a href="/admin" data-i18n="admin">Admin</a><a href="#top" data-i18n="backToTop">Back to top ↑</a></div>
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 Iwo Piłucki</p>
+        <div class="footer-links">
+          <a href="#">Instagram</a>
+          <a href="#">Behance</a>
+        </div>
+      </div>
     </footer>
 
     <script src="script.js"></script>

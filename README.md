@@ -1,20 +1,19 @@
 # Iwo Piłucki — Photography Portfolio
 
-Bilingual photography portfolio and private image-management panel for aviation, landscape, and city photography.
+Portfolio fotografa specjalizującego się w lotnictwie, krajobrazach i miastach.
 
-## Run locally
+## Lokalnie
 
-1. Install dependencies: `npm install`
-2. Copy `.env.example` to `.env` and set a unique admin password and session secret.
-3. Start the server: `npm start`
-4. Open `http://localhost:3000` or the admin panel at `http://localhost:3000/admin`.
+1. Otwórz `index.html` w przeglądarce lub użyj lokalnego serwera: `npx serve .` lub `python3 -m http.server 8000`
+2. Strona dostępna pod adresem `http://localhost:8000`
 
-The admin panel publishes image files to `uploads/` and stores their metadata in `data/photos.json`. Both are excluded from Git so private photographs are not pushed with the source.
+## Struktura
 
-## Photo drop folders
+- `index.html` — główna strona portfolio
+- `styles.css` — style CSS
+- `script.js` — interakcje JavaScript (menu mobilne)
+- `photos-to-add/` — foldery na zdjęcia do dodania (Aviation, Landscape, City)
 
-Drop photographs that are ready to be added to the site into `photos-to-add/Aviation`, `photos-to-add/Landscape`, or `photos-to-add/City`. These incoming image files are excluded from Git.
+## Paleta i styl
 
-## Configuration
-
-Set `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `SESSION_SECRET`, and optionally `PORT` in `.env`. Use a strong, unique password and a randomly generated session secret for deployments. Set `NODE_ENV=production` when serving over HTTPS so session cookies use the `Secure` flag.
+Kremowe tło (`#f2efe9`), czerń (`#161513`), złoty akcent (`#b8a888`), fonty Fraunces + Inter. Inspiracja: styl editorialny z animowanymi blobami i glassmorphismem.

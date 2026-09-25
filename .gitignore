@@ -2,7 +2,3 @@ node_modules/
 .env
 .opencode/
 .DS_Store
-uploads/*
-!uploads/.gitkeep
-photos-to-add/*/*
-!photos-to-add/*/.gitkeep
