@@ -11,6 +11,10 @@ Bilingual photography portfolio and private image-management panel for aviation,
 
 The admin panel publishes image files to `uploads/` and stores their metadata in `data/photos.json`. Both are excluded from Git so private photographs are not pushed with the source.
 
+## Photo drop folders
+
+Drop photographs that are ready to be added to the site into `photos-to-add/Aviation`, `photos-to-add/Landscape`, or `photos-to-add/City`. These incoming image files are excluded from Git.
+
 ## Configuration
 
 Set `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `SESSION_SECRET`, and optionally `PORT` in `.env`. Use a strong, unique password and a randomly generated session secret for deployments. Set `NODE_ENV=production` when serving over HTTPS so session cookies use the `Secure` flag.

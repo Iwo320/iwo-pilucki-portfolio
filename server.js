@@ -148,6 +148,7 @@ app.post('/api/admin/photos', requireAdmin, upload.single('photo'), (request, re
     title,
     alt,
     category,
+    homeOnly: request.body.homeOnly === 'true',
     location,
     year: /^\d{4}$/.test(year) ? year : '',
     url: `/uploads/${request.file.filename}`,

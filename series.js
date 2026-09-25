@@ -1,21 +1,21 @@
 const series = {
   Aviation: {
     title: ['Mach &', 'silence'],
-    hero: 'https://images.unsplash.com/photo-1474302770737-173ee21bab63?auto=format&fit=crop&w=2400&q=92',
+    hero: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&w=2400&q=92',
     description: { en: 'Aircraft become sculpture when speed, light and engineering meet.', pl: 'Samoloty stają się rzeźbą, gdy spotykają się prędkość, światło i inżynieria.' },
     intro: { en: 'A study of machines designed to leave the ground.', pl: 'Studium maszyn zaprojektowanych, by oderwać się od ziemi.' },
     next: 'Landscape'
   },
   Landscape: {
     title: ['Where roads', 'disappear'],
-    hero: 'https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=2400&q=92',
+    hero: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2400&q=92',
     description: { en: 'Remote landscapes stripped down to weather, texture and distance.', pl: 'Odległe krajobrazy sprowadzone do pogody, faktury i dystansu.' },
     intro: { en: 'Places where scale silences everything else.', pl: 'Miejsca, w których skala wycisza wszystko inne.' },
     next: 'City'
   },
   City: {
     title: ['', 'Cities'],
-    hero: 'https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=2400&q=92',
+    hero: 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=2400&q=92',
     description: { en: 'The restless architecture and accidental poetry of life after sunset.', pl: 'Niespokojna architektura i przypadkowa poezja życia po zmroku.' },
     intro: { en: 'Human constellations drawn in concrete and light.', pl: 'Ludzkie konstelacje zapisane w betonie i świetle.' },
     next: 'Aviation'
@@ -62,7 +62,7 @@ async function loadPhotos() {
   try {
     const response = await fetch('/api/photos');
     if (!response.ok) throw new Error('Could not load photographs.');
-    photos = (await response.json()).filter((photo) => photo.category === category);
+    photos = (await response.json()).filter((photo) => photo.category === category && !photo.homeOnly);
   } catch {
     photos = [];
   }

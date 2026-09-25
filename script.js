@@ -100,5 +100,35 @@ document.querySelectorAll('.project-image, .project-title-link').forEach((link) 
   });
 });
 
+async function loadHomeSelections() {
+  try {
+    const response = await fetch('/api/photos');
+    if (!response.ok) return;
+    const photos = (await response.json()).filter((photo) => photo.homeOnly);
+    const byCategory = photos.reduce((groups, photo) => {
+      (groups[photo.category] ||= []).push(photo);
+      return groups;
+    }, {});
+    const featured = [
+      ['Aviation', '.project-air .project-image img', 0],
+      ['Landscape', '.project-earth .project-image img', 0],
+      ['City', '.project-city .project-image img', 0],
+      ['Aviation', '.contact-sheet img:first-child', 1],
+      ['City', '.contact-sheet img:last-child', 1]
+    ];
+    featured.forEach(([category, selector, index]) => {
+      const photo = byCategory[category]?.[index];
+      const image = document.querySelector(selector);
+      if (!photo || !image) return;
+      image.src = photo.url;
+      image.alt = photo.alt;
+      image.classList.add('uploaded-photo');
+      image.closest('.project-image')?.classList.add('is-landscape');
+    });
+  } catch { /* Keep the portfolio available if the optional photo API is offline. */ }
+}
+
+loadHomeSelections();
+
 document.querySelector('#year').textContent = new Date().getFullYear();
 setLanguage(localStorage.getItem('portfolio-language') === 'pl' ? 'pl' : 'en');
