@@ -43,19 +43,20 @@ body.is-leaving .page-transition { transform: translateY(0); }
 .menu-toggle { display: none; color: inherit; background: none; border: 0; padding: 10px; }
 .menu-toggle span { display: block; width: 27px; border-top: 2px solid; margin: 6px 0; transition: transform .25s; }
 
-.hero { position: relative; isolation: isolate; height: max(740px, 100svh); min-height: 680px; overflow: hidden; }
+.hero { position: relative; isolation: isolate; height: max(780px, 100svh); min-height: 720px; overflow: hidden; }
 .hero-photo, .hero-shade { position: absolute; z-index: -2; inset: 0; }
-.hero-photo { --hero-x: 0px; --hero-y: 0px; background: url("https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&w=2400&q=92") center 42% / cover; transform: scale(1.08) translate3d(var(--hero-x), var(--hero-y), 0); transition: transform 1.8s cubic-bezier(.2,.7,.2,1); will-change: transform; }
-body.is-loaded .hero-photo { transform: scale(1.025) translate3d(var(--hero-x), var(--hero-y), 0); transition-duration: .7s; }
-.hero-shade { z-index: -1; background: linear-gradient(90deg, rgba(3,8,13,.63), rgba(3,8,13,.03) 57%, rgba(3,8,13,.21)), linear-gradient(0deg, rgba(3,8,13,.58), transparent 45%); }
-.hero h1 { position: absolute; left: 3vw; right: 2vw; bottom: 10.5vh; margin: 0; font: clamp(74px, 13.2vw, 225px)/.72 "Archivo Black", sans-serif; letter-spacing: -.095em; text-transform: uppercase; }
+.hero-photo { z-index: 2; top: 11vh; bottom: auto; left: 50%; width: clamp(440px, 46vw, 730px); height: min(74vh, 750px); background: none; object-fit: contain; filter: drop-shadow(0 28px 24px rgba(0,0,0,.15)); transform: translate3d(calc(-50% + var(--hero-x)), var(--hero-y), 0) scale(1.06); }
+body.is-loaded .hero-photo { transform: translate3d(calc(-50% + var(--hero-x)), var(--hero-y), 0) scale(1.03); transition-duration: .7s; }
+.hero-shade { z-index: 1; background: linear-gradient(90deg, rgba(3,8,13,.63), rgba(3,8,13,.03) 57%, rgba(3,8,13,.21)), linear-gradient(0deg, rgba(3,8,13,.58), transparent 45%); }
+.hero::before { content: ""; position: absolute; z-index: 0; left: 3.2vw; right: 3.2vw; top: 82px; border-top: 1px solid rgba(7,9,12,.18); }
+.hero h1 { z-index: 1; left: 2.4vw; right: 2.4vw; bottom: 10vh; margin: 0; font: 400 clamp(125px, 22vw, 340px)/.58 "Newsreader", serif; letter-spacing: -.095em; text-transform: uppercase; color: var(--signal); }
 .hero h1 span { display: block; }
-.hero h1 span:last-child { margin-left: 12.5vw; color: transparent; -webkit-text-stroke: clamp(1px, .1vw, 2px) white; }
-html[lang="pl"] .hero h1 { font-size: clamp(70px, 12vw, 198px); }
+.hero h1 span:last-child { margin-left: 20vw; color: var(--signal); -webkit-text-stroke: 0; }
+html[lang="pl"] .hero h1 { font-size: clamp(125px, 22vw, 340px); }
 html[lang="pl"] .projects-heading h2 { font-size: clamp(48px, 7.3vw, 116px); }
-.hero-kicker { position: absolute; right: 3.2vw; bottom: 33vh; margin: 0; padding-left: 18px; border-left: 2px solid var(--signal); font-size: 14px; line-height: 1.35; }
-.hero-scroll { position: absolute; left: 3.2vw; bottom: 3.2vw; display: flex; align-items: center; gap: 17px; font: 10px "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .06em; }
-.hero-scroll svg { width: 46px; height: 46px; fill: none; stroke: currentColor; stroke-width: 1; }
+.hero-kicker { z-index: 3; top: 18%; right: 7vw; margin: 0; padding-left: 18px; border-left: 2px solid var(--signal); color: #282a28; font-size: 11px; line-height: 1.55; letter-spacing: .02em; }
+.hero-scroll { z-index: 3; left: 6.5vw; bottom: 4vw; display: flex; align-items: center; gap: 17px; font: 10px "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .06em; }
+.hero-scroll svg { width: 40px; height: 40px; fill: none; stroke: currentColor; stroke-width: 1; }
 .hero-scroll path { stroke: var(--signal); }
 
 .manifesto { padding: 140px 6.5vw 160px; background: var(--white); color: var(--black); }
@@ -229,10 +230,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--signal); outlin
   .hero h1 { z-index: 1; bottom: 16%; font-size: clamp(76px, 24vw, 110px); line-height: .63; }
   html[lang="pl"] .hero h1 { font-size: clamp(76px, 24vw, 110px); }
   .hero h1 span:last-child { margin: .05em 0 0 9vw; }
-  .hero-kicker { top: 18%; bottom: auto; right: 5vw; font-size: 10px; color: var(--black); }
-  .hero-note { font-size: 13px; }
-  .hero-note-left { top: 30%; left: 5vw; }
-  .hero-note-right { top: 36%; right: 5vw; }
+  .hero-kicker { top: 16%; bottom: auto; right: 5vw; font-size: 10px; color: var(--black); }
   .hero-scroll { left: 5vw; bottom: 5vw; }
   .manifesto { padding: 90px 6vw 100px; }
   .manifesto-copy { display: block; margin-top: 50px; }
