@@ -3,65 +3,116 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#e9e9e9" />
-    <meta name="description" content="Iwo Piłucki's visual studies of altitude, motion and place." />
+    <meta name="theme-color" content="#f1efe9" />
+    <meta name="description" content="Iwo Piłucki — altitude, atmosphere and arrival. Five photographic collections." />
     <title>Iwo Piłucki — Photography</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="grid" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
     <header class="header">
       <a href="#top" class="brand">IWO PIŁUCKI <span>/ PHOTOGRAPHY</span></a>
       <nav class="nav" id="nav" aria-label="Primary navigation">
-        <a href="#work" data-en="Work" data-pl="Prace">Work</a>
+        <a href="#work" data-en="Collections" data-pl="Kolekcje">Collections</a>
         <a href="#about" data-en="Journal" data-pl="Dziennik">Journal</a>
         <a href="#contact" data-en="Contact" data-pl="Kontakt">Contact</a>
+        <a class="nav-login" href="login.html" data-en="Client login" data-pl="Logowanie">Client login</a>
       </nav>
       <div class="header-actions">
         <button class="language" type="button" aria-label="Change language">PL</button>
         <a class="login-trigger" href="login.html" data-en="Client login" data-pl="Logowanie">Client login</a>
-        <a class="contact-link" href="mailto:iwopilucki@icloud.com" data-en="Say hello ↗" data-pl="Napisz ↗">Say hello ↗</a>
         <button class="menu" type="button" aria-controls="nav" aria-expanded="false" aria-label="Open menu"><i></i><i></i></button>
       </div>
     </header>
 
     <main>
       <section class="hero" id="top">
-        <div class="hero-copy"><p class="hero-kicker" data-en="Photography by Iwo Piłucki" data-pl="Fotografia Iwo Piłuckiego">Photography by Iwo Piłucki</p><h1>Iwo<br /><i>Piłucki</i></h1><p class="hero-description" data-en="Observations of places, light and the quiet details between them." data-pl="Obserwacje miejsc, światła i cichych detali pomiędzy nimi.">Observations of places, light and the quiet details between them.</p></div>
-        <figure class="hero-image"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=90" alt="Mountain landscape at sunrise" fetchpriority="high" /><figcaption data-en="Field notes / 2026" data-pl="Notatki z drogi / 2026">Field notes / 2026</figcaption></figure>
-        <div class="hero-foot"><span>52° 13' N / 21° 01' E</span><span data-en="Scroll to enter" data-pl="Przewiń dalej">Scroll to enter</span><span>EST. 2026</span></div>
-      </section>
-
-      <section class="statement" id="about">
-        <div class="section-meta"><span>01</span><span data-en="Journal entry" data-pl="Wpis z dziennika">Journal entry</span><span>IP / 001</span></div>
-        <div class="statement-layout">
-          <p class="statement-note" data-en="Each frame is a record of a split second: geometry, weather, distance and light aligning just once." data-pl="Każdy kadr zapisuje ułamek sekundy: geometrię, pogodę, dystans i światło, które układają się tylko raz.">Each frame is a record of a split second: geometry, weather, distance and light aligning just once.</p>
-          <h2 data-en="I follow the line between <i>where we are</i> and where we are going." data-pl="Szukam linii między <i>miejscem, w którym jesteśmy,</i> a tym, do którego zmierzamy.">I follow the line between <i>where we are</i> and where we are going.</h2>
+        <div class="hero-top">
+          <p class="stamp" data-en="Five collections" data-pl="Pięć kolekcji">Five collections</p>
+          <p class="hero-kicker" data-en="Photography by Iwo Piłucki" data-pl="Fotografia Iwo Piłuckiego">Photography by Iwo Piłucki</p>
+        </div>
+        <h1 class="flap" aria-label="Iwo Piłucki">
+          <span class="flap-row" data-text="IWO">IWO</span>
+          <span class="flap-row" data-text="PIŁUCKI">PIŁUCKI</span>
+        </h1>
+        <div class="hero-bottom">
+          <p class="hero-sub" data-en="Altitude, atmosphere and arrival — field notes in five collections." data-pl="Wysokość, atmosfera i przylot — notatki terenowe w pięciu kolekcjach.">Altitude, atmosphere and arrival — field notes in five collections.</p>
+          <figure class="hero-photo">
+            <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Mountain landscape at sunrise" fetchpriority="high" />
+            <figcaption><span data-en="Field notes / 2026" data-pl="Notatki z drogi / 2026">Field notes / 2026</span><span>35MM</span></figcaption>
+          </figure>
+        </div>
+        <div class="hero-meta">
+          <span data-en="Scroll ↓" data-pl="Przewiń ↓">Scroll ↓</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#work" class="btn-solid" data-en="View collections" data-pl="Zobacz kolekcje">View collections</a>
+          <a href="mailto:iwopilucki@icloud.com" class="btn-ghost" data-en="Say hello ↗" data-pl="Napisz ↗">Say hello ↗</a>
         </div>
       </section>
 
-      <section class="work" id="work">
-        <div class="section-meta"><span>02</span><span data-en="Selected studies" data-pl="Wybrane studia">Selected studies</span><span>2024 — NOW</span></div>
-        <div class="work-intro"><h2 data-en="Three ways of looking." data-pl="Trzy sposoby patrzenia.">Three ways of looking.</h2><p data-en="A field guide to movement, silence and the human scale." data-pl="Przewodnik po ruchu, ciszy i ludzkiej skali.">A field guide to movement, silence and the human scale.</p></div>
-        <div class="study-grid">
-          <a class="study study--wide" data-category="landscape" href="collection.html?category=landscape"><img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1600&q=90" alt="Foggy mountain valley" loading="lazy" /><span class="study-index">01 / 05</span><h3 data-en="Landscape" data-pl="Krajobraz">Landscape</h3><p data-en="Distance and weather" data-pl="Dystans i pogoda">Distance and weather</p></a>
-          <a class="study" data-category="cities" href="collection.html?category=cities"><img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1000&q=90" alt="Modern city buildings" loading="lazy" /><span class="study-index">02 / 05</span><h3 data-en="Cities" data-pl="Miasta">Cities</h3><p data-en="Structure and rhythm" data-pl="Struktura i rytm">Structure and rhythm</p></a>
-          <a class="study" data-category="details" href="collection.html?category=details"><img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1000&q=90" alt="Leaves in natural light" loading="lazy" /><span class="study-index">03 / 05</span><h3 data-en="Details" data-pl="Detale">Details</h3><p data-en="Small things, closely seen" data-pl="Małe rzeczy, z bliska">Small things, closely seen</p></a>
-          <a class="study" data-category="atmosphere" href="collection.html?category=atmosphere"><img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1000&q=90" alt="Mountain silhouette in fog" loading="lazy" /><span class="study-index">04 / 05</span><h3 data-en="Atmosphere" data-pl="Atmosfera">Atmosphere</h3><p data-en="A change in the air" data-pl="Zmiana w powietrzu">A change in the air</p></a>
-          <a class="study study--aviation" data-category="aviation" href="collection.html?category=aviation"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1000&q=90" alt="Aircraft wing above the clouds" loading="lazy" /><span class="study-index">05 / 05</span><h3 data-en="Aviation" data-pl="Lotnictwo">Aviation</h3><p data-en="One view from above" data-pl="Jedno spojrzenie z góry">One view from above</p></a>
+      <section class="statement" id="about">
+        <p class="sec-tag"><span>01</span><span data-en="Journal" data-pl="Dziennik">Journal</span><span>2026</span></p>
+        <h2 class="reveal" data-en="I chase the line where earth lets go of the sky." data-pl="Gonię linię, na której ziemia puszcza niebo.">I chase the line where earth lets go of the sky.</h2>
+        <div class="statement-grid">
+          <p class="dropcap" data-en="Every frame is a boarding pass: a seat number, a window, a few seconds of weather that will never repeat. I photograph the in-between — runways, horizons, streets after rain." data-pl="Każdy kadr to karta pokładowa: numer miejsca, okno, kilka sekund pogody, która już się nie powtórzy. Fotografuję to pomiędzy — pasy startowe, horyzonty, ulice po deszczu.">Every frame is a boarding pass: a seat number, a window, a few seconds of weather that will never repeat. I photograph the in-between — runways, horizons, streets after rain.</p>
+          <figure class="polaroid p1">
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Aircraft wing above the clouds" loading="lazy" />
+            <figcaption>cloudbase 410</figcaption>
+          </figure>
+          <figure class="polaroid p2">
+            <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="City buildings in daylight" loading="lazy" />
+            <figcaption>after rain</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="board" id="work">
+        <p class="sec-tag sec-tag--light"><span>02</span><span data-en="Collections" data-pl="Kolekcje">Collections</span><span>2024 — NOW</span></p>
+        <h2 class="reveal" data-en="Selected work" data-pl="Wybrane prace">Selected work</h2>
+        <div class="board-rows">
+          <a class="board-row" href="collection.html?category=landscape">
+            <span class="br-dest"><b data-en="Landscape" data-pl="Krajobraz">Landscape</b><i data-en="Distance and weather" data-pl="Dystans i pogoda">Distance and weather</i></span>
+            <span class="br-go" aria-hidden="true">→</span>
+          </a>
+          <a class="board-row" href="collection.html?category=cities">
+            <span class="br-dest"><b data-en="Cities" data-pl="Miasta">Cities</b><i data-en="Structure and rhythm" data-pl="Struktura i rytm">Structure and rhythm</i></span>
+            <span class="br-go" aria-hidden="true">→</span>
+          </a>
+          <a class="board-row" href="collection.html?category=details">
+            <span class="br-dest"><b data-en="Details" data-pl="Detale">Details</b><i data-en="Small things, closely seen" data-pl="Małe rzeczy, z bliska">Small things, closely seen</i></span>
+            <span class="br-go" aria-hidden="true">→</span>
+          </a>
+          <a class="board-row" href="collection.html?category=atmosphere">
+            <span class="br-dest"><b data-en="Atmosphere" data-pl="Atmosfera">Atmosphere</b><i data-en="A change in the air" data-pl="Zmiana w powietrzu">A change in the air</i></span>
+            <span class="br-go" aria-hidden="true">→</span>
+          </a>
+          <a class="board-row" href="collection.html?category=aviation">
+            <span class="br-dest"><b data-en="Aviation" data-pl="Lotnictwo">Aviation</b><i data-en="One view from above" data-pl="Jedno spojrzenie z góry">One view from above</i></span>
+            <span class="br-go" aria-hidden="true">→</span>
+          </a>
         </div>
       </section>
 
       <section class="contact" id="contact">
         <p data-en="Have a project in mind?" data-pl="Masz pomysł na projekt?">Have a project in mind?</p>
-        <h2 data-en="Let’s make<br /><i>an image.</i>" data-pl="Stwórzmy<br /><i>obraz.</i>">Let’s make<br /><i>an image.</i></h2>
-        <a href="mailto:iwopilucki@icloud.com" data-en="iwopilucki@icloud.com ↗" data-pl="iwopilucki@icloud.com ↗">iwopilucki@icloud.com ↗</a>
+        <h2 class="reveal" data-en="Let's make an image." data-pl="Zróbmy obraz.">Let's make an image.</h2>
+        <a href="mailto:iwopilucki@icloud.com">iwopilucki@icloud.com ↗</a>
       </section>
     </main>
-    <footer><span>IWO PIŁUCKI / PHOTOGRAPHY</span><span>© 2026</span><a href="#top" data-en="Back to top ↑" data-pl="Na górę ↑">Back to top ↑</a></footer>
+
+    <footer>
+      <p class="foot-giant" aria-hidden="true">PIŁUCKI</p>
+      <div class="foot-row">
+        <span>IWO PIŁUCKI / PHOTOGRAPHY</span>
+        <span>© 2026</span>
+        <a href="#top" data-en="Back to top ↑" data-pl="Na górę ↑">Back to top ↑</a>
+      </div>
+    </footer>
   </body>
 </html>
