@@ -14,45 +14,25 @@ function setLanguage(locale) {
 language.addEventListener('click', () => setLanguage(document.documentElement.lang === 'en' ? 'pl' : 'en'));
 menu.addEventListener('click', () => {
   const isOpen = nav.classList.toggle('is-open');
+  menu.classList.toggle('is-open', isOpen);
   menu.setAttribute('aria-expanded', String(isOpen));
 });
-nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('is-open')));
+nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+  nav.classList.remove('is-open');
+  menu.classList.remove('is-open');
+  menu.setAttribute('aria-expanded', 'false');
+}));
 
-/* ── split-flap hero board ── */
-(function flap() {
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const pool = 'ABCDEFGHIJKLMNOPRSTUVWXYZŁÓŚŻŹĆŃAEIOUY123456789';
-  document.querySelectorAll('.flap-row').forEach(row => {
-    const target = row.dataset.text || row.textContent;
-    row.setAttribute('aria-label', target);
-    row.textContent = '';
-    [...target].forEach(char => {
-      const cell = document.createElement('span');
-      cell.className = 'flap-cell';
-      cell.textContent = char;
-      row.append(cell);
-    });
-    if (reduced) return;
-    const cells = [...row.children];
-    cells.forEach((cell, i) => {
-      const final = target[i];
-      let ticks = 0;
-      const total = 8 + i * 3;
-      const timer = setInterval(() => {
-        cell.textContent = pool[Math.floor(Math.random() * pool.length)];
-        if (++ticks >= total) {
-          clearInterval(timer);
-          cell.textContent = final;
-        }
-      }, 55);
-    });
-  });
-})();
+const year = document.getElementById('year');
+if (year) year.textContent = String(new Date().getFullYear());
 
-/* ── quiet scroll reveals ── */
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ── scroll reveals ── */
 (function reveal() {
   const nodes = document.querySelectorAll('.reveal');
-  if (!nodes.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (!nodes.length) return;
+  if (reducedMotion) {
     nodes.forEach(node => node.classList.add('in'));
     return;
   }
@@ -63,6 +43,42 @@ nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => n
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.08, rootMargin: '0px 0px -4% 0px' });
   nodes.forEach(node => observer.observe(node));
+})();
+
+/* ── drag-to-scroll roll ── */
+(function stripDrag() {
+  const strip = document.getElementById('strip');
+  if (!strip) return;
+  let isDown = false;
+  let startX = 0;
+  let startScroll = 0;
+  let moved = false;
+
+  strip.addEventListener('pointerdown', event => {
+    isDown = true;
+    moved = false;
+    startX = event.clientX;
+    startScroll = strip.scrollLeft;
+    strip.classList.add('is-dragging');
+    strip.setPointerCapture(event.pointerId);
+  });
+  strip.addEventListener('pointermove', event => {
+    if (!isDown) return;
+    const delta = event.clientX - startX;
+    if (Math.abs(delta) > 4) moved = true;
+    strip.scrollLeft = startScroll - delta;
+  });
+  const end = event => {
+    if (!isDown) return;
+    isDown = false;
+    strip.classList.remove('is-dragging');
+    if (strip.hasPointerCapture?.(event.pointerId)) strip.releasePointerCapture(event.pointerId);
+  };
+  strip.addEventListener('pointerup', end);
+  strip.addEventListener('pointercancel', end);
+  strip.addEventListener('click', event => {
+    if (moved) event.preventDefault();
+  }, true);
 })();

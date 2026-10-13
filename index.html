@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f1efe9" />
-    <meta name="description" content="Iwo Piłucki — altitude, atmosphere and arrival. Five photographic collections." />
+    <meta name="theme-color" content="#15150f" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <meta name="description" content="Iwo Piłucki — photographs of weather, cities and quiet places. Five collections." />
     <title>Iwo Piłucki — Photography</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
   </head>
@@ -16,102 +17,197 @@
     <div class="grain" aria-hidden="true"></div>
 
     <header class="header">
-      <a href="#top" class="brand">IWO PIŁUCKI <span>/ PHOTOGRAPHY</span></a>
+      <a href="#top" class="brand">IWO PIŁUCKI <span>/ photography</span></a>
       <nav class="nav" id="nav" aria-label="Primary navigation">
         <a href="#work" data-en="Collections" data-pl="Kolekcje">Collections</a>
-        <a href="#about" data-en="Journal" data-pl="Dziennik">Journal</a>
+        <a href="#about" data-en="About" data-pl="O mnie">About</a>
+        <a href="#roll" data-en="Roll" data-pl="Rolka">Roll</a>
         <a href="#contact" data-en="Contact" data-pl="Kontakt">Contact</a>
-        <a class="nav-login" href="login.html" data-en="Client login" data-pl="Logowanie">Client login</a>
+        <a class="nav-login" href="login.html" data-en="Client login" data-pl="Logowanie klienta">Client login</a>
       </nav>
       <div class="header-actions">
         <button class="language" type="button" aria-label="Change language">PL</button>
-        <a class="login-trigger" href="login.html" data-en="Client login" data-pl="Logowanie">Client login</a>
+        <a class="btn btn-ghost btn-sm login-trigger" href="login.html" data-en="Client login" data-pl="Logowanie">Client login</a>
         <button class="menu" type="button" aria-controls="nav" aria-expanded="false" aria-label="Open menu"><i></i><i></i></button>
       </div>
     </header>
 
     <main>
-      <section class="hero" id="top">
-        <div class="hero-top">
-          <p class="stamp" data-en="Five collections" data-pl="Pięć kolekcji">Five collections</p>
-          <p class="hero-kicker" data-en="Photography by Iwo Piłucki" data-pl="Fotografia Iwo Piłuckiego">Photography by Iwo Piłucki</p>
+      <section class="cover" id="top">
+        <div class="cover-media" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&amp;fit=crop&amp;w=1800&amp;q=80" alt="" fetchpriority="high" />
         </div>
-        <h1 class="flap" aria-label="Iwo Piłucki">
-          <span class="flap-row" data-text="IWO">IWO</span>
-          <span class="flap-row" data-text="PIŁUCKI">PIŁUCKI</span>
-        </h1>
-        <div class="hero-bottom">
-          <p class="hero-sub" data-en="Altitude, atmosphere and arrival — field notes in five collections." data-pl="Wysokość, atmosfera i przylot — notatki terenowe w pięciu kolekcjach.">Altitude, atmosphere and arrival — field notes in five collections.</p>
-          <figure class="hero-photo">
-            <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Mountain landscape at sunrise" fetchpriority="high" />
-            <figcaption><span data-en="Field notes / 2026" data-pl="Notatki z drogi / 2026">Field notes / 2026</span><span>35MM</span></figcaption>
+        <div class="cover-inner">
+          <div>
+            <h1 class="reveal" style="--d:.1s"><span class="line">IWO</span><span class="line">PIŁUCKI</span></h1>
+            <p class="cover-sub reveal" style="--d:.25s" data-en="Photographs of <b>weather</b>, <b>cities</b> and <b>quiet places</b> — made slowly, kept only if they still feel like a letter." data-pl="Fotografie <b>pogody</b>, <b>miast</b> i <b>cichych miejsc</b> — robione powoli, zostawiane tylko jeśli wciąż są jak list.">Photographs of <b>weather</b>, <b>cities</b> and <b>quiet places</b> — made slowly, kept only if they still feel like a letter.</p>
+            <div class="cover-cta reveal" style="--d:.4s">
+              <a class="btn btn-solid" href="#work" data-en="Browse collections" data-pl="Przeglądaj kolekcje">Browse collections</a>
+              <a class="btn btn-ghost" href="mailto:iwopilucki@icloud.com" data-en="Get in touch" data-pl="Napisz">Get in touch</a>
+            </div>
+          </div>
+          <div class="cover-meta reveal" style="--d:.55s">
+            <b data-en="Five collections" data-pl="Pięć kolekcji">Five collections</b>
+            <span data-en="Warsaw — worldwide" data-pl="Warszawa — cały świat">Warsaw — worldwide</span><br />
+            <span data-en="Shooting since 2019" data-pl="Fotografuję od 2019">Shooting since 2019</span>
+          </div>
+        </div>
+        <div class="scroll-cue" aria-hidden="true"><span data-en="Scroll" data-pl="Przewiń">Scroll</span><i></i></div>
+      </section>
+
+      <div class="spreads" id="work">
+        <article class="spread reveal">
+          <figure class="spread-media">
+            <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Alpenglow on a mountain ridge at dawn" loading="lazy" />
           </figure>
+          <div class="spread-copy">
+            <p class="tag" data-en="Collection" data-pl="Kolekcja">Collection</p>
+            <h3 data-en="Landscape" data-pl="Krajobraz">Landscape</h3>
+            <p data-en="Ridgelines at first light, valleys holding their fog. Walked more than driven, always back before breakfast." data-pl="Grzbiety w pierwszym świetle, doliny trzymające mgłę. Więcej na piechotę niż autem, zawsze z powrotem przed śniadaniem.">Ridgelines at first light, valleys holding their fog. Walked more than driven, always back before breakfast.</p>
+            <span class="spread-meta">2019 — 2026 · 48 frames</span>
+            <a class="btn btn-ghost btn-sm" href="collection.html?category=landscape" data-en="View collection" data-pl="Zobacz kolekcję">View collection</a>
+          </div>
+        </article>
+
+        <article class="spread spread--flip reveal">
+          <figure class="spread-media">
+            <img src="https://images.unsplash.com/photo-1555109307-f7d9da25c244?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Manhattan skyline sinking into dawn haze" loading="lazy" />
+          </figure>
+          <div class="spread-copy">
+            <p class="tag" data-en="Collection" data-pl="Kolekcja">Collection</p>
+            <h3 data-en="Cities" data-pl="Miasta">Cities</h3>
+            <p data-en="Two hours after midnight, when the streets finally exhale and the glass gives the sky back." data-pl="Dwie godziny po północy, gdy ulice wreszcie oddychają, a szkło oddaje niebo z powrotem.">Two hours after midnight, when the streets finally exhale and the glass gives the sky back.</p>
+            <span class="spread-meta">2020 — 2026 · 62 frames</span>
+            <a class="btn btn-ghost btn-sm" href="collection.html?category=cities" data-en="View collection" data-pl="Zobacz kolekcję">View collection</a>
+          </div>
+        </article>
+
+        <article class="spread reveal">
+          <figure class="spread-media">
+            <img src="https://images.unsplash.com/photo-1449247709967-d4461a6a6103?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="A minimal white desk in soft daylight" loading="lazy" />
+          </figure>
+          <div class="spread-copy">
+            <p class="tag" data-en="Collection" data-pl="Kolekcja">Collection</p>
+            <h3 data-en="Details" data-pl="Detale">Details</h3>
+            <p data-en="Tables, windows, small evidence of somebody having just left the room." data-pl="Stoły, okna, drobne dowody tego, że ktoś dopiero co wyszedł z pokoju.">Tables, windows, small evidence of somebody having just left the room.</p>
+            <span class="spread-meta">2021 — 2026 · 35 frames</span>
+            <a class="btn btn-ghost btn-sm" href="collection.html?category=details" data-en="View collection" data-pl="Zobacz kolekcję">View collection</a>
+          </div>
+        </article>
+
+        <article class="spread spread--flip reveal">
+          <figure class="spread-media">
+            <img src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Heavy storm clouds gathering over open land" loading="lazy" />
+          </figure>
+          <div class="spread-copy">
+            <p class="tag" data-en="Collection" data-pl="Kolekcja">Collection</p>
+            <h3 data-en="Atmosphere" data-pl="Atmosfera">Atmosphere</h3>
+            <p data-en="Incoming fronts, low pressure, the twenty minutes before a storm decides anything." data-pl="Nadchodzące fronty, niskie ciśnienie, dwadzieścia minut zanim burza cokolwiek zdecyduje.">Incoming fronts, low pressure, the twenty minutes before a storm decides anything.</p>
+            <span class="spread-meta">2019 — 2026 · 41 frames</span>
+            <a class="btn btn-ghost btn-sm" href="collection.html?category=atmosphere" data-en="View collection" data-pl="Zobacz kolekcję">View collection</a>
+          </div>
+        </article>
+
+        <article class="spread reveal">
+          <figure class="spread-media">
+            <img src="https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Cloud tops lit by low sun, seen from an aircraft" loading="lazy" />
+          </figure>
+          <div class="spread-copy">
+            <p class="tag" data-en="Collection" data-pl="Kolekcja">Collection</p>
+            <h3 data-en="Aviation" data-pl="Lotnictwo">Aviation</h3>
+            <p data-en="Window seat, wing light, the planet below looking temporary and extremely well made." data-pl="Miejsce przy oknie, podświetlone skrzydło, planeta niżej — tymczasowa i niezwykle dobrze zrobiona.">Window seat, wing light, the planet below looking temporary and extremely well made.</p>
+            <span class="spread-meta">2022 — 2026 · 27 frames</span>
+            <a class="btn btn-ghost btn-sm" href="collection.html?category=aviation" data-en="View collection" data-pl="Zobacz kolekcję">View collection</a>
+          </div>
+        </article>
+      </div>
+
+      <section class="section about-narrow" id="about">
+        <div class="reveal">
+          <p class="tag" data-en="About" data-pl="O mnie">About</p>
+          <h2 data-en="I photograph the in-between." data-pl="Fotografuję to pomiędzy.">I photograph the in-between.</h2>
         </div>
-        <div class="hero-meta">
-          <span data-en="Scroll ↓" data-pl="Przewiń ↓">Scroll ↓</span>
-        </div>
-        <div class="hero-actions">
-          <a href="#work" class="btn-solid" data-en="View collections" data-pl="Zobacz kolekcje">View collections</a>
-          <a href="mailto:iwopilucki@icloud.com" class="btn-ghost" data-en="Say hello ↗" data-pl="Napisz ↗">Say hello ↗</a>
+        <figure class="about-portrait reveal">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=1100&amp;q=80" alt="Black and white studio portrait" loading="lazy" />
+        </figure>
+        <div class="reveal">
+          <p data-en="Fog lifting off a ridge. A street rinsed by rain. Cabin lights on a night flight. I work slowly, edit harder, and keep only the frames that still feel like a <b>letter to someone</b>." data-pl="Mgła schodząca z grzbietu. Ulica wypłukana deszczem. Światła kabiny na nocnym locie. Pracuję powoli, montuję ostrożniej i zostawiam tylko kadry, które wciąż są <b>listem do kogoś</b>.">Fog lifting off a ridge. A street rinsed by rain. Cabin lights on a night flight. I work slowly, edit harder, and keep only the frames that still feel like a <b>letter to someone</b>.</p>
+          <p data-en="Based in Warsaw, usually somewhere else. Available for editorial, brand and private commissions — anywhere the weather is interesting." data-pl="Mieszkam w Warszawie, zwykle gdzieś indziej. Dostępny dla mediów, marek i klientów prywatnych — wszędzie tam, gdzie pogoda jest ciekawa.">Based in Warsaw, usually somewhere else. Available for editorial, brand and private commissions — anywhere the weather is interesting.</p>
+          <div class="mini-stats">
+            <div class="stat"><b>10</b><span data-en="years shooting" data-pl="lat za aparatem">years shooting</span></div>
+            <div class="stat"><b>23</b><span data-en="countries" data-pl="kraje">countries</span></div>
+            <div class="stat"><b>48h</b><span data-en="reply time" data-pl="czas odpowiedzi">reply time</span></div>
+          </div>
         </div>
       </section>
 
-      <section class="statement" id="about">
-        <p class="sec-tag"><span>01</span><span data-en="Journal" data-pl="Dziennik">Journal</span><span>2026</span></p>
-        <h2 class="reveal" data-en="I chase the line where earth lets go of the sky." data-pl="Gonię linię, na której ziemia puszcza niebo.">I chase the line where earth lets go of the sky.</h2>
-        <div class="statement-grid">
-          <p class="dropcap" data-en="Every frame is a boarding pass: a seat number, a window, a few seconds of weather that will never repeat. I photograph the in-between — runways, horizons, streets after rain." data-pl="Każdy kadr to karta pokładowa: numer miejsca, okno, kilka sekund pogody, która już się nie powtórzy. Fotografuję to pomiędzy — pasy startowe, horyzonty, ulice po deszczu.">Every frame is a boarding pass: a seat number, a window, a few seconds of weather that will never repeat. I photograph the in-between — runways, horizons, streets after rain.</p>
-          <figure class="polaroid p1">
-            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Aircraft wing above the clouds" loading="lazy" />
-            <figcaption>cloudbase 410</figcaption>
+      <section class="section strip-wrap" id="roll">
+        <div class="section-head reveal">
+          <div>
+            <p class="tag" data-en="Loose frames" data-pl="Luźne kadry">Loose frames</p>
+            <h2 data-en="From the roll" data-pl="Z rolki">From the roll</h2>
+          </div>
+          <p data-en="Pictures that never joined a collection — not yet." data-pl="Zdjęcia, które nie weszły do kolekcji — jeszcze nie.">Pictures that never joined a collection — not yet.</p>
+        </div>
+        <div class="strip reveal" id="strip">
+          <figure class="shot-card">
+            <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="A path receding into a green forest" loading="lazy" />
+            <figcaption><span data-en="The path" data-pl="Ścieżka">The path</span><span>Białowieża</span></figcaption>
           </figure>
-          <figure class="polaroid p2">
-            <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="City buildings in daylight" loading="lazy" />
-            <figcaption>after rain</figcaption>
+          <figure class="shot-card">
+            <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="A white room with linen curtains and plants" loading="lazy" />
+            <figcaption><span data-en="White room" data-pl="Biały pokój">White room</span><span>Kraków</span></figcaption>
+          </figure>
+          <figure class="shot-card">
+            <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Sunlight through the canopy of a huge tree" loading="lazy" />
+            <figcaption><span data-en="The old tree" data-pl="Stare drzewo">The old tree</span><span>Chiba</span></figcaption>
+          </figure>
+          <figure class="shot-card">
+            <img src="https://images.unsplash.com/photo-1494548162494-384bba4ab999?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Mountain range under a soft sky" loading="lazy" />
+            <figcaption><span data-en="Soft range" data-pl="Miękki grzbiet">Soft range</span><span>Tatry</span></figcaption>
+          </figure>
+          <figure class="shot-card">
+            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Angular glass and steel architecture" loading="lazy" />
+            <figcaption><span data-en="Glass angle" data-pl="Szklany kąt">Glass angle</span><span>Oslo</span></figcaption>
+          </figure>
+          <figure class="shot-card">
+            <img src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Wooden boats on a still alpine lake" loading="lazy" />
+            <figcaption><span data-en="Still lake" data-pl="Ciche jezioro">Still lake</span><span>Lago di Braies</span></figcaption>
           </figure>
         </div>
+        <p class="strip-note reveal" data-en="Drag to explore." data-pl="Przeciągnij, żeby oglądać.">Drag to explore.</p>
       </section>
 
-      <section class="board" id="work">
-        <p class="sec-tag sec-tag--light"><span>02</span><span data-en="Collections" data-pl="Kolekcje">Collections</span><span>2024 — NOW</span></p>
-        <h2 class="reveal" data-en="Selected work" data-pl="Wybrane prace">Selected work</h2>
-        <div class="board-rows">
-          <a class="board-row" href="collection.html?category=landscape">
-            <span class="br-dest"><b data-en="Landscape" data-pl="Krajobraz">Landscape</b><i data-en="Distance and weather" data-pl="Dystans i pogoda">Distance and weather</i></span>
-            <span class="br-go" aria-hidden="true">→</span>
-          </a>
-          <a class="board-row" href="collection.html?category=cities">
-            <span class="br-dest"><b data-en="Cities" data-pl="Miasta">Cities</b><i data-en="Structure and rhythm" data-pl="Struktura i rytm">Structure and rhythm</i></span>
-            <span class="br-go" aria-hidden="true">→</span>
-          </a>
-          <a class="board-row" href="collection.html?category=details">
-            <span class="br-dest"><b data-en="Details" data-pl="Detale">Details</b><i data-en="Small things, closely seen" data-pl="Małe rzeczy, z bliska">Small things, closely seen</i></span>
-            <span class="br-go" aria-hidden="true">→</span>
-          </a>
-          <a class="board-row" href="collection.html?category=atmosphere">
-            <span class="br-dest"><b data-en="Atmosphere" data-pl="Atmosfera">Atmosphere</b><i data-en="A change in the air" data-pl="Zmiana w powietrzu">A change in the air</i></span>
-            <span class="br-go" aria-hidden="true">→</span>
-          </a>
-          <a class="board-row" href="collection.html?category=aviation">
-            <span class="br-dest"><b data-en="Aviation" data-pl="Lotnictwo">Aviation</b><i data-en="One view from above" data-pl="Jedno spojrzenie z góry">One view from above</i></span>
-            <span class="br-go" aria-hidden="true">→</span>
-          </a>
+      <figure class="quote reveal">
+        <blockquote data-en="Every frame is a letter written in light." data-pl="Każdy kadr to list napisany światłem.">Every frame is a letter written in light.</blockquote>
+        <figcaption data-en="— journal, entry 214" data-pl="— dziennik, wpis 214">— journal, entry 214</figcaption>
+      </figure>
+
+      <section class="contact reveal" id="contact">
+        <div class="contact-bg" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="" loading="lazy" />
         </div>
-      </section>
-
-      <section class="contact" id="contact">
-        <p data-en="Have a project in mind?" data-pl="Masz pomysł na projekt?">Have a project in mind?</p>
-        <h2 class="reveal" data-en="Let's make an image." data-pl="Zróbmy obraz.">Let's make an image.</h2>
-        <a href="mailto:iwopilucki@icloud.com">iwopilucki@icloud.com ↗</a>
+        <div class="contact-inner">
+          <h2 data-en="Let's make an image." data-pl="Zróbmy zdjęcie.">Let's make an image.</h2>
+          <p data-en="Commissions, collaborations and print requests — write anytime. I answer within two days, usually with weather complaints." data-pl="Zlecenia, współpraca i odbitki — pisz śmiało. Odpowiadam w dwa dni, zwykle z narzekaniem na pogodę.">Commissions, collaborations and print requests — write anytime. I answer within two days, usually with weather complaints.</p>
+          <a class="btn btn-solid" href="mailto:iwopilucki@icloud.com">iwopilucki@icloud.com</a>
+          <div class="contact-meta">
+            <span data-en="Warsaw · available worldwide" data-pl="Warszawa · dostępny na świecie">Warsaw · available worldwide</span>
+            <span data-en="Next opening — March 2026" data-pl="Najbliższy termin — marzec 2026">Next opening — March 2026</span>
+          </div>
+        </div>
       </section>
     </main>
 
     <footer>
-      <p class="foot-giant" aria-hidden="true">PIŁUCKI</p>
       <div class="foot-row">
-        <span>IWO PIŁUCKI / PHOTOGRAPHY</span>
-        <span>© 2026</span>
-        <a href="#top" data-en="Back to top ↑" data-pl="Na górę ↑">Back to top ↑</a>
+        <span>© <span id="year">2026</span> Iwo Piłucki</span>
+        <div class="foot-links">
+          <a href="#" rel="noopener">Instagram</a>
+          <a href="#" rel="noopener">Behance</a>
+          <a href="mailto:iwopilucki@icloud.com">Email</a>
+        </div>
+        <a class="to-top" href="#top"><span data-en="Back to top" data-pl="Do góry">Back to top</span></a>
       </div>
     </footer>
   </body>
