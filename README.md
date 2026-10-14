@@ -10,18 +10,19 @@ Portfolio z publiczną galerią i prywatnym panelem administratora.
 
 ## Panel administratora
 
-Kliknij `Client login` w nagłówku. Po zalogowaniu strona otworzy osobny panel `admin.html`. Wybierz kategorię i dodaj zdjęcia. Pliki są publikowane w `uploads/`, a dane galerii zapisywane w `data/photos.json`.
-
 Na stronie głównej kliknięcie kolekcji otwiera pełną galerię w nowej zakładce. Nowe zdjęcia nie zmieniają okładek kolekcji.
 
 Kategorie: Landscape, Cities, Details, Atmosphere, Aviation.
 
 ## Konfiguracja
 
-Ustaw `PORT`, `ADMIN_EMAIL`, `ADMIN_PASSWORD` oraz `SESSION_SECRET` w `.env`. Skopiuj `.env.example`, jeśli plik nie istnieje.
+Ustaw `PORT`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `SESSION_SECRET`, `SUPABASE_URL` oraz `SUPABASE_SERVICE_ROLE_KEY` jako zmienne środowiskowe. Klucza service role i hasła nie wolno umieszczać w kodzie ani po stronie przeglądarki.
 
 ## Wdrożenie na Render
 
-Utwórz Blueprint w Render, wskazując to repozytorium i plik `render.yaml`, lub użyj [Deploy to Render](https://render.com/deploy?repo=https://github.com/Iwo320/iwo-pilucki-portfolio). Podczas konfiguracji ustaw `ADMIN_PASSWORD` jako poufną zmienną środowiskową w panelu Render — nie zapisuj hasła w repozytorium. `SESSION_SECRET` jest generowany automatycznie.
+1. Utwórz darmowy projekt Supabase i otwórz SQL Editor.
+2. Uruchom zawartość pliku [`supabase/schema.sql`](./supabase/schema.sql), aby utworzyć tabelę zdjęć, publiczny bucket i dodać aktualne zdjęcia.
+3. Skopiuj Project URL oraz klucz `service_role` z ustawień API Supabase.
+4. Utwórz Blueprint w Render z tego repozytorium przez [Deploy to Render](https://render.com/deploy?repo=https://github.com/Iwo320/iwo-pilucki-portfolio). Ustaw `ADMIN_PASSWORD`, `SUPABASE_URL` i `SUPABASE_SERVICE_ROLE_KEY` jako poufne zmienne środowiskowe. `SESSION_SECRET` jest generowany automatycznie.
 
-Po wdrożeniu aplikacja i panel logowania będą dostępne pod adresem `https://iwo-pilucki-portfolio.onrender.com`. Publiczna strona pozostaje na GitHub Pages, a jej przycisk logowania otworzy panel na Render. Domena `iwopilucki.pl` jest obecnie obsługiwana przez GitHub Pages; aby cała aplikacja działała pod tą domeną, trzeba przenieść domenę do usługi Render.
+Po wdrożeniu kliknij `Client login` na [iwopilucki.pl](https://iwopilucki.pl/), zaloguj się, a następnie dodawaj zdjęcia w panelu. Nowe zdjęcia trafią do Supabase Storage i pojawią się w galerii pobieranej z backendu. Strona portfolio pozostaje na GitHub Pages; backend i panel logowania działają na Render.

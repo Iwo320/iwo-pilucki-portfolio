@@ -33,8 +33,16 @@ document.addEventListener('keydown', event => {
   if (event.key === 'ArrowLeft') showPhoto(currentIndex - 1);
 });
 
-fetch('data/photos.json').then(response => {
-  if (!response.ok) throw new Error(`Failed to load photos: ${response.status}`);
+async function loadPhotos() {
+  const response = await fetch('https://iwo-pilucki-portfolio.onrender.com/api/photos');
+  if (!response.ok) throw new Error(`Failed to load live photos: ${response.status}`);
+  return response.json();
+}
+
+loadPhotos().catch(async error => {
+  console.warn('Live gallery is unavailable; loading the published photo catalog.', error);
+  const response = await fetch('data/photos.json');
+  if (!response.ok) throw new Error(`Failed to load the published photo catalog: ${response.status}`);
   return response.json();
 }).then(photos => {
   collection = photos.filter(photo => photo.category === category);

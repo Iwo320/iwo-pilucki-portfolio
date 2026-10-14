@@ -65,20 +65,26 @@ function renderPhotos(photos) {
 
 async function loadPhotos() {
   const response = await fetch('/api/photos');
-  renderPhotos(response.ok ? await response.json() : []);
+  if (!response.ok) throw new Error(`Failed to load photos (${response.status}).`);
+  renderPhotos(await response.json());
 }
 
 uploadForm.addEventListener('submit', async event => {
   event.preventDefault();
   status.textContent = 'Uploading photos...';
-  const response = await fetch('/api/photos', { method: 'POST', body: new FormData(uploadForm) });
-  if (!response.ok) {
-    status.textContent = 'Upload failed. Please try again.';
-    return;
+  try {
+    const response = await fetch('/api/photos', { method: 'POST', body: new FormData(uploadForm) });
+    if (!response.ok) {
+      const result = await response.json();
+      throw new Error(result.error || `Upload failed (${response.status}).`);
+    }
+    uploadForm.reset();
+    status.textContent = 'Photos uploaded to the collection.';
+    await loadPhotos();
+  } catch (error) {
+    console.error('Photo upload failed.', error);
+    status.textContent = 'Upload failed. Check the server and storage configuration, then try again.';
   }
-  uploadForm.reset();
-  status.textContent = 'Photos uploaded to the collection.';
-  loadPhotos();
 });
 
 logout.addEventListener('click', async () => {
@@ -88,5 +94,11 @@ logout.addEventListener('click', async () => {
 
 fetch('/api/session').then(response => response.json()).then(session => {
   if (!session.isAdmin) window.location.replace('index.html');
-  else loadPhotos();
-}).catch(() => window.location.replace('index.html'));
+  else loadPhotos().catch(error => {
+    console.error('Failed to load the photo library.', error);
+    status.textContent = 'Could not load the photo library. Check the server configuration.';
+  });
+}).catch(error => {
+  console.error('Failed to check the admin session.', error);
+  window.location.replace('index.html');
+});
