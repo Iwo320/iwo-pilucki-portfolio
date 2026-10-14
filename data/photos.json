@@ -1,9 +1,34 @@
 [
   {
-    "id": "f9873887-bad4-4022-8783-1f4aa5b23499",
+    "id": "18bf2e51-b732-42d7-a69e-dd22d49e3b81",
     "category": "aviation",
-    "url": "/uploads/1790375346077-a61d3803-2ec4-4a84-9827-9672c2ee556c.jpeg",
-    "createdAt": "2026-09-25T22:29:06.100Z",
-    "description": "Airbus a400M"
+    "description": "",
+    "source": "photos-to-add/Aviation/IMG_9719.JPG",
+    "url": "photos-to-add/Aviation/IMG_9719.JPG",
+    "createdAt": "2026-10-14T08:30:38.953Z"
+  },
+  {
+    "id": "6bb29478-1ef8-4ab6-9829-a50ff8177ab5",
+    "category": "aviation",
+    "description": "",
+    "source": "photos-to-add/Aviation/IMG_9727.JPG",
+    "url": "photos-to-add/Aviation/IMG_9727.JPG",
+    "createdAt": "2026-10-14T08:30:39.257Z"
+  },
+  {
+    "id": "e8467733-74ad-4ae7-bdd3-f4d2c4ed7beb",
+    "category": "cities",
+    "description": "",
+    "source": "photos-to-add/City/IMG_9236.JPG",
+    "url": "photos-to-add/City/IMG_9236.JPG",
+    "createdAt": "2026-10-14T08:30:39.267Z"
+  },
+  {
+    "id": "9c51b86c-03cc-4f94-88e1-ad06b9a6498f",
+    "category": "landscape",
+    "description": "",
+    "source": "photos-to-add/Landscape/IMG_9681.JPG",
+    "url": "photos-to-add/Landscape/IMG_9681.JPG",
+    "createdAt": "2026-10-14T08:30:39.280Z"
   }
 ]

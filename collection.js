@@ -33,7 +33,10 @@ document.addEventListener('keydown', event => {
   if (event.key === 'ArrowLeft') showPhoto(currentIndex - 1);
 });
 
-fetch('/api/photos').then(response => response.ok ? response.json() : []).then(photos => {
+fetch('data/photos.json').then(response => {
+  if (!response.ok) throw new Error(`Failed to load photos: ${response.status}`);
+  return response.json();
+}).then(photos => {
   collection = photos.filter(photo => photo.category === category);
   document.querySelector('.count').textContent = `${collection.length} ${collection.length === 1 ? 'photograph' : 'photographs'}`;
   const grid = document.querySelector('.collection-grid');
@@ -51,7 +54,8 @@ fetch('/api/photos').then(response => response.ok ? response.json() : []).then(p
     grid.append(card);
   });
   document.querySelector('.empty').hidden = collection.length > 0;
-}).catch(() => {
-  document.querySelector('.count').textContent = '0 photographs';
-  document.querySelector('.empty').hidden = false;
+}).catch(error => {
+  console.error('Failed to load collection photos.', error);
+  document.querySelector('.count').textContent = 'Unable to load photographs.';
+  document.querySelector('.empty').hidden = true;
 });
