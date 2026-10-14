@@ -148,6 +148,8 @@ footer{border-top:1px solid var(--line-soft);padding:30px clamp(20px,5vw,64px) 3
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease}
 .reveal.in{opacity:1;transform:none}
 .cover .reveal{transition-delay:var(--d,0s)}
+.lazy-image{opacity:0;transition:opacity .8s ease}
+.lazy-image.lazy-image-in{opacity:1}
 
 a:focus-visible,button:focus-visible{outline:1.5px solid var(--bronze);outline-offset:3px;border-radius:8px}
 
