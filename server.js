@@ -14,7 +14,18 @@ const sessionSecret = process.env.SESSION_SECRET || 'replace-this-session-secret
 const categories = new Set(['landscape', 'cities', 'details', 'atmosphere', 'aviation']);
 const uploadsDir = path.join(__dirname, 'uploads');
 const dataDir = path.join(__dirname, 'data');
+const stagingDir = path.join(__dirname, 'photos-to-add');
 const photoDataPath = path.join(dataDir, 'photos.json');
+const supportedImageExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif']);
+const categoryAliases = {
+  landscape: 'landscape',
+  city: 'cities',
+  cities: 'cities',
+  detail: 'details',
+  details: 'details',
+  atmosphere: 'atmosphere',
+  aviation: 'aviation'
+};
 
 fs.mkdirSync(uploadsDir, { recursive: true });
 fs.mkdirSync(dataDir, { recursive: true });
@@ -26,6 +37,63 @@ function readPhotos() {
 
 function writePhotos(photos) {
   fs.writeFileSync(photoDataPath, `${JSON.stringify(photos, null, 2)}\n`);
+}
+
+function normalizeCategory(value) {
+  return String(value || '').trim().toLowerCase().replace(/[^a-z]+/g, '');
+}
+
+function importStagedPhotos() {
+  if (!fs.existsSync(stagingDir)) return;
+
+  const photos = readPhotos();
+  const existingSources = new Set(photos.filter(photo => photo.source).map(photo => photo.source));
+  const imported = [];
+
+  function visitDirectory(directoryPath) {
+    if (!fs.existsSync(directoryPath)) return;
+
+    for (const entry of fs.readdirSync(directoryPath, { withFileTypes: true })) {
+      const fullPath = path.join(directoryPath, entry.name);
+
+      if (entry.isDirectory()) {
+        visitDirectory(fullPath);
+        continue;
+      }
+
+      if (!entry.isFile() || entry.name.startsWith('.')) continue;
+
+      const extension = path.extname(entry.name).toLowerCase();
+      if (!supportedImageExtensions.has(extension)) continue;
+
+      const rawCategory = normalizeCategory(path.basename(path.dirname(fullPath)));
+      const category = categoryAliases[rawCategory] || null;
+      if (!category) continue;
+
+      const source = path.relative(__dirname, fullPath).replace(/\\/g, '/');
+      if (existingSources.has(source)) continue;
+
+      const fileName = `${Date.now()}-${crypto.randomUUID()}${extension}`;
+      const targetPath = path.join(uploadsDir, fileName);
+      fs.copyFileSync(fullPath, targetPath);
+
+      imported.push({
+        id: crypto.randomUUID(),
+        category,
+        description: '',
+        source,
+        url: `/uploads/${fileName}`,
+        createdAt: new Date().toISOString()
+      });
+      existingSources.add(source);
+    }
+  }
+
+  visitDirectory(stagingDir);
+
+  if (imported.length) {
+    writePhotos([...imported, ...photos]);
+  }
 }
 
 const upload = multer({
@@ -80,6 +148,7 @@ app.post('/api/photos', requireAdmin, upload.array('photos', 12), (request, resp
     id: crypto.randomUUID(),
     category: request.body.category,
     description,
+    source: 'upload',
     url: `/uploads/${file.filename}`,
     createdAt: new Date().toISOString()
   }));
@@ -99,4 +168,7 @@ app.patch('/api/photos/:id', requireAdmin, (request, response) => {
 
 app.use('/uploads', express.static(uploadsDir));
 app.use(express.static(__dirname));
+
+importStagedPhotos();
+
 app.listen(port, () => console.log(`Portfolio running at http://localhost:${port}`));
