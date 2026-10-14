@@ -22,6 +22,6 @@ Ustaw `PORT`, `ADMIN_EMAIL`, `ADMIN_PASSWORD` oraz `SESSION_SECRET` w `.env`. Sk
 
 ## Wdrożenie na Render
 
-Utwórz nowy Blueprint w Render, wskazując to repozytorium i plik `render.yaml`. Podczas konfiguracji ustaw `ADMIN_PASSWORD` jako poufną zmienną środowiskową w panelu Render — nie zapisuj hasła w repozytorium. `SESSION_SECRET` jest generowany automatycznie.
+Utwórz Blueprint w Render, wskazując to repozytorium i plik `render.yaml`, lub użyj [Deploy to Render](https://render.com/deploy?repo=https://github.com/Iwo320/iwo-pilucki-portfolio). Podczas konfiguracji ustaw `ADMIN_PASSWORD` jako poufną zmienną środowiskową w panelu Render — nie zapisuj hasła w repozytorium. `SESSION_SECRET` jest generowany automatycznie.
 
-Po wdrożeniu zaloguj się na adresie Render usługi. Domena `iwopilucki.pl` jest obecnie obsługiwana przez GitHub Pages; aby używać panelu logowania pod tą domeną, trzeba przenieść domenę do usługi Render.
+Po wdrożeniu aplikacja i panel logowania będą dostępne pod adresem `https://iwo-pilucki-portfolio.onrender.com`. Publiczna strona pozostaje na GitHub Pages, a jej przycisk logowania otworzy panel na Render. Domena `iwopilucki.pl` jest obecnie obsługiwana przez GitHub Pages; aby cała aplikacja działała pod tą domeną, trzeba przenieść domenę do usługi Render.
