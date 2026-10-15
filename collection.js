@@ -33,18 +33,7 @@ document.addEventListener('keydown', event => {
   if (event.key === 'ArrowLeft') showPhoto(currentIndex - 1);
 });
 
-async function loadPhotos() {
-  const response = await fetch('https://iwo-pilucki-portfolio.onrender.com/api/photos');
-  if (!response.ok) throw new Error(`Failed to load live photos: ${response.status}`);
-  return response.json();
-}
-
-loadPhotos().catch(async error => {
-  console.warn('Live gallery is unavailable; loading the published photo catalog.', error);
-  const response = await fetch('data/photos.json');
-  if (!response.ok) throw new Error(`Failed to load the published photo catalog: ${response.status}`);
-  return response.json();
-}).then(photos => {
+fetch('/api/photos').then(response => response.ok ? response.json() : []).then(photos => {
   collection = photos.filter(photo => photo.category === category);
   document.querySelector('.count').textContent = `${collection.length} ${collection.length === 1 ? 'photograph' : 'photographs'}`;
   const grid = document.querySelector('.collection-grid');
@@ -62,8 +51,7 @@ loadPhotos().catch(async error => {
     grid.append(card);
   });
   document.querySelector('.empty').hidden = collection.length > 0;
-}).catch(error => {
-  console.error('Failed to load collection photos.', error);
-  document.querySelector('.count').textContent = 'Unable to load photographs.';
-  document.querySelector('.empty').hidden = true;
+}).catch(() => {
+  document.querySelector('.count').textContent = '0 photographs';
+  document.querySelector('.empty').hidden = false;
 });

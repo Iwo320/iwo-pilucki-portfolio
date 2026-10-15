@@ -43,28 +43,8 @@ const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matc
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0, rootMargin: '0px 0px -4% 0px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -4% 0px' });
   nodes.forEach(node => observer.observe(node));
-})();
-
-/* ── lazy image reveals ── */
-(function revealLazyImages() {
-  const images = document.querySelectorAll('img[loading="lazy"]');
-  if (!images.length || reducedMotion || !('IntersectionObserver' in window)) return;
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('lazy-image-in');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0, rootMargin: '160px 0px' });
-
-  images.forEach(image => {
-    image.classList.add('lazy-image');
-    observer.observe(image);
-  });
 })();
 
 /* ── drag-to-scroll roll ── */
