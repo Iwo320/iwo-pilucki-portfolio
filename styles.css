@@ -58,8 +58,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* ── cover ── */
 .cover{position:relative;min-height:92svh;display:flex;align-items:flex-end;overflow:hidden}
 .cover-media{position:absolute;inset:0;z-index:0}
-/* reduced heavy filters and removed default upscale to avoid soft rendering */
-.cover-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.55) contrast(1.06) brightness(.78);will-change:transform}
+.cover-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.4) contrast(1.04) brightness(.68);transform:scale(1.04)}
 .cover-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,21,15,.5) 0%,rgba(21,21,15,.12) 40%,rgba(21,21,15,.9) 100%)}
 .cover-inner{position:relative;z-index:1;width:100%;max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px) clamp(44px,7vh,80px);display:flex;align-items:end;justify-content:space-between;ga[...]
 .cover h1{margin:0 0 18px;font-weight:500;letter-spacing:-.03em;line-height:.96;font-size:clamp(50px,8vw,118px)}
@@ -79,9 +78,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .spread--flip .spread-media{order:2}
 .spread--flip .spread-copy{order:1}
 .spread-media{position:relative;overflow:hidden;min-height:56svh}
-/* smoother, faster transitions and will-change to keep rendering crisp */
-.spread-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s ease;will-change:transform;backface-visibility:hidden}
-.spread:hover .spread-media img{transform:scale(1.03)}
+.spread-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.6s ease}
+.spread:hover .spread-media img{transform:scale(1.04)}
 .spread-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,rgba(21,21,15,.35))}
 .spread--flip .spread-media::after{background:linear-gradient(270deg,transparent 60%,rgba(21,21,15,.35))}
 .spread-copy{display:flex;flex-direction:column;justify-content:center;gap:18px;padding:clamp(48px,7vw,110px) clamp(24px,4.5vw,72px)}
@@ -117,8 +115,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .strip::-webkit-scrollbar{height:5px}
 .strip::-webkit-scrollbar-thumb{background:rgba(234,230,218,.2);border-radius:99px}
 .shot-card{flex:0 0 clamp(230px,26vw,340px);scroll-snap-align:start;border-radius:10px;overflow:hidden;position:relative;aspect-ratio:3/4;border:1px solid var(--line-soft);background:var(--bg-sof[...]
-.shot-card img{width:100%;height:100%;object-fit:cover;filter:contrast(1.04) brightness(.88);transition:transform .6s;will-change:transform}
-.shot-card:hover img{transform:scale(1.03)}
+.shot-card img{width:100%;height:100%;object-fit:cover;filter:contrast(1.04) brightness(.88);transition:transform .9s}
+.shot-card:hover img{transform:scale(1.05)}
 .shot-card figcaption{position:absolute;inset:auto 0 0 0;padding:44px 15px 13px;font-size:13px;background:linear-gradient(180deg,transparent,rgba(10,10,7,.82));display:flex;justify-content:space-[...]
 .shot-card figcaption span:last-child{color:var(--muted)}
 .strip-note{margin-top:4px;font-size:12.5px;color:var(--muted)}
@@ -147,11 +145,11 @@ footer{border-top:1px solid var(--line-soft);padding:30px clamp(20px,5vw,64px) 3
 .to-top:hover{color:var(--txt)}
 
 /* ── reveal ── */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease}
 .reveal.in{opacity:1;transform:none}
 .cover .reveal{transition-delay:var(--d,0s)}
-.lazy-image{opacity:0;transition:opacity .5s ease,filter .35s ease}
-.lazy-image.lazy-image-in{opacity:1;filter:none}
+.lazy-image{opacity:0;transition:opacity .8s ease}
+.lazy-image.lazy-image-in{opacity:1}
 
 a:focus-visible,button:focus-visible{outline:1.5px solid var(--bronze);outline-offset:3px;border-radius:8px}
 
