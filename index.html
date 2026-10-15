@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <!-- Preload the hero (LCP) image -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1800&q=80" />
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -23,9 +25,11 @@
         <a href="#about" data-en="About" data-pl="O mnie">About</a>
         <a href="#roll" data-en="Roll" data-pl="Rolka">Roll</a>
         <a href="#contact" data-en="Contact" data-pl="Kontakt">Contact</a>
+        <a class="nav-login" href="https://iwo-pilucki-portfolio.onrender.com/login.html" data-en="Client login" data-pl="Logowanie klienta">Client login</a>
       </nav>
       <div class="header-actions">
         <button class="language" type="button" aria-label="Change language">PL</button>
+        <a class="btn btn-ghost btn-sm login-trigger" href="https://iwo-pilucki-portfolio.onrender.com/login.html" data-en="Client login" data-pl="Logowanie">Client login</a>
         <button class="menu" type="button" aria-controls="nav" aria-expanded="false" aria-label="Open menu"><i></i><i></i></button>
       </div>
     </header>
@@ -33,7 +37,19 @@
     <main>
       <section class="cover" id="top">
         <div class="cover-media" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1800&q=80" alt="" fetchpriority="high" />
+          <!-- Responsive hero with srcset/sizes; loading eager for LCP -->
+          <img
+            src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=75"
+            srcset="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=600&q=60 600w,
+                    https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=75 1200w,
+                    https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1800&q=80 1800w"
+            sizes="(max-width:600px) 100vw, (max-width:1200px) 100vw, 1200px"
+            width="1800"
+            height="1200"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+            alt="" />
         </div>
         <div class="cover-inner">
           <div>
@@ -56,7 +72,8 @@
       <div class="spreads" id="work">
         <article class="spread reveal">
           <figure class="spread-media">
-            <img src="photos-to-add/photos/IMG_0076.jpeg" alt="Alpenglow on a mountain ridge at dawn" loading="lazy" />
+            <!-- local photo: keep lazy loading, add class for reveal and decoding -->
+            <img class="lazy-image" src="photos-to-add/photos/IMG_0076.jpeg" alt="Alpenglow on a mountain ridge at dawn" loading="lazy" decoding="async" />
           </figure>
                     <div class="spread-copy">
             <p class="tag" data-en="Collection" data-pl="Kolekcja">Collection</p>
@@ -69,7 +86,7 @@
 
         <article class="spread spread--flip reveal">
           <figure class="spread-media">
-            <img src="photos-to-add/photos/city.jpeg" alt="Manhattan skyline sinking into dawn haze" loading="lazy" />
+            <img class="lazy-image" src="photos-to-add/photos/city.jpeg" alt="Manhattan skyline sinking into dawn haze" loading="lazy" decoding="async" />
           </figure>
  <div class="spread-copy">
             <p class="tag" data-en="Collection" data-pl="Kolekcja">Collection</p>
@@ -81,7 +98,7 @@
 
         <article class="spread reveal">
           <figure class="spread-media">
-            <img src="photos-to-add/photos/nature.JPG" alt="A minimal white desk in soft daylight" loading="lazy" />
+            <img class="lazy-image" src="photos-to-add/photos/nature.JPG" alt="A minimal white desk in soft daylight" loading="lazy" decoding="async" />
           </figure>
           <div class="spread-copy">
             <p class="tag" data-en="Collection" data-pl="Kolekcja">Collection</p>
@@ -94,7 +111,7 @@
 
         <article class="spread spread--flip reveal">
           <figure class="spread-media">
-            <img src="photos-to-add/photos/atmosfera.jpeg" alt="Heavy storm clouds gathering over open land" loading="lazy" />
+            <img class="lazy-image" src="photos-to-add/photos/atmosfera.jpeg" alt="Heavy storm clouds gathering over open land" loading="lazy" decoding="async" />
           </figure>
           <div class="spread-copy">
             <p class="tag" data-en="Collection" data-pl="Kolekcja">Collection</p>
@@ -107,7 +124,7 @@
 
         <article class="spread reveal">
           <figure class="spread-media">
-            <img src="photos-to-add/photos/ryanair.jpg" alt="Cloud tops lit by low sun, seen from an aircraft" loading="lazy" />
+            <img class="lazy-image" src="photos-to-add/photos/ryanair.jpg" alt="Cloud tops lit by low sun, seen from an aircraft" loading="lazy" decoding="async" />
           </figure>
           <div class="spread-copy">
             <p class="tag" data-en="Collection" data-pl="Kolekcja">Collection</p>
@@ -146,27 +163,27 @@
         </div>
         <div class="strip reveal" id="strip">
           <figure class="shot-card">
-            <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80" alt="A path receding into a green forest" loading="lazy" />
+            <img class="lazy-image" src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80" srcset="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=400&q=70 400w, https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80 800w" sizes="(max-width:600px) 100vw, 340px" alt="A path receding into a green forest" loading="lazy" decoding="async" />
             <figcaption><span data-en="The path" data-pl="Ścieżka">The path</span><span>Białowieża</span></figcaption>
           </figure>
           <figure class="shot-card">
-            <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=80" alt="A white room with linen curtains and plants" loading="lazy" />
+            <img class="lazy-image" src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=80" srcset="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=400&q=70 400w, https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=80 800w" sizes="(max-width:600px) 100vw, 340px" alt="A white room with linen curtains and plants" loading="lazy" decoding="async" />
             <figcaption><span data-en="White room" data-pl="Biały pokój">White room</span><span>Kraków</span></figcaption>
           </figure>
           <figure class="shot-card">
-            <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80" alt="Sunlight through the canopy of a huge tree" loading="lazy" />
+            <img class="lazy-image" src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80" srcset="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=400&q=70 400w, https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80 800w" sizes="(max-width:600px) 100vw, 340px" alt="Sunlight through the canopy of a huge tree" loading="lazy" decoding="async" />
             <figcaption><span data-en="The old tree" data-pl="Stare drzewo">The old tree</span><span>Chiba</span></figcaption>
           </figure>
           <figure class="shot-card">
-            <img src="https://images.unsplash.com/photo-1494548162494-384bba4ab999?auto=format&fit=crop&w=800&q=80" alt="Mountain range under a soft sky" loading="lazy" />
+            <img class="lazy-image" src="https://images.unsplash.com/photo-1494548162494-384bba4ab999?auto=format&fit=crop&w=800&q=80" srcset="https://images.unsplash.com/photo-1494548162494-384bba4ab999?auto=format&fit=crop&w=400&q=70 400w, https://images.unsplash.com/photo-1494548162494-384bba4ab999?auto=format&fit=crop&w=800&q=80 800w" sizes="(max-width:600px) 100vw, 340px" alt="Mountain range under a soft sky" loading="lazy" decoding="async" />
             <figcaption><span data-en="Soft range" data-pl="Miękki grzbiet">Soft range</span><span>Tatry</span></figcaption>
           </figure>
           <figure class="shot-card">
-            <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=800&q=80" alt="Angular glass and steel architecture" loading="lazy" />
+            <img class="lazy-image" src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=800&q=80" srcset="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=400&q=70 400w, https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=800&q=80 800w" sizes="(max-width:600px) 100vw, 340px" alt="Angular glass and steel architecture" loading="lazy" decoding="async" />
             <figcaption><span data-en="Glass angle" data-pl="Szklany kąt">Glass angle</span><span>Oslo</span></figcaption>
           </figure>
           <figure class="shot-card">
-            <img src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=800&q=80" alt="Wooden boats on a still alpine lake" loading="lazy" />
+            <img class="lazy-image" src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=800&q=80" srcset="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=400&q=70 400w, https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=800&q=80 800w" sizes="(max-width:600px) 100vw, 340px" alt="Wooden boats on a still alpine lake" loading="lazy" decoding="async" />
             <figcaption><span data-en="Still lake" data-pl="Ciche jezioro">Still lake</span><span>Lago di Braies</span></figcaption>
           </figure>
         </div>
@@ -180,7 +197,7 @@
 
       <section class="contact reveal" id="contact">
         <div class="contact-bg" aria-hidden="true">
-          <img src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=1600&q=80" alt="" loading="lazy" />
+          <img class="lazy-image" src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=1600&q=80" alt="" loading="lazy" decoding="async" />
         </div>
         <div class="contact-inner">
           <h2 data-en="Let's make an image." data-pl="Zróbmy zdjęcie.">Let's make an image.</h2>
