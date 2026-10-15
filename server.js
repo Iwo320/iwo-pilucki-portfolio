@@ -82,7 +82,7 @@ app.use((request, response, next) => {
   if (origin && allowedOrigins.has(origin)) {
     response.set('Access-Control-Allow-Origin', origin);
     response.set('Vary', 'Origin');
-    response.set('Access-Control-Allow-Methods', 'GET, POST, PATCH, OPTIONS');
+    response.set('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
     response.set('Access-Control-Allow-Headers', 'Content-Type');
   }
   if (request.method === 'OPTIONS') return response.sendStatus(origin && !allowedOrigins.has(origin) ? 403 : 204);
@@ -190,6 +190,31 @@ app.patch('/api/photos/:id', requireAdmin, async (request, response, next) => {
     });
     if (!rows.length) return response.status(404).json({ error: 'Photo not found.' });
     response.json(publicPhoto(rows[0]));
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.delete('/api/photos/:id', requireAdmin, async (request, response, next) => {
+  try {
+    const rows = await supabaseRequest(`/rest/v1/${photoTable}?id=eq.${encodeURIComponent(request.params.id)}&select=id,url`, {
+      method: 'DELETE',
+      headers: { 'Prefer': 'return=representation' }
+    });
+    if (!rows.length) return response.status(404).json({ error: 'Photo not found.' });
+
+    const marker = `/storage/v1/object/public/${encodeURIComponent(storageBucket)}/`;
+    const url = rows[0].url || '';
+    const markerIndex = url.indexOf(marker);
+    if (markerIndex !== -1) {
+      const objectPath = url.slice(markerIndex + marker.length).split('/').map(decodeURIComponent).join('/');
+      try {
+        await supabaseRequest(`/storage/v1/object/${encodeURIComponent(storageBucket)}/${objectPath}`, { method: 'DELETE' });
+      } catch (cleanupError) {
+        console.error('Could not remove the image from storage after deleting the photo row.', cleanupError);
+      }
+    }
+    response.json({ ok: true });
   } catch (error) {
     next(error);
   }

@@ -1,0 +1,27 @@
+import { chromium } from 'playwright';
+import fs from 'fs';
+fs.mkdirSync('/tmp/shots/admin', { recursive: true });
+const env = Object.fromEntries(fs.readFileSync('.env','utf8').split('\n').filter(l=>l.includes('=')).map(l=>[l.slice(0,l.indexOf('=')).trim(), l.slice(l.indexOf('=')+1).replace(/^"|"$/g,'')]));
+const b = await chromium.launch();
+const p = await b.newPage({ viewport: { width: 1440, height: 950 } });
+const errors = []; p.on('console', m => { if (m.type()==='error') errors.push(m.text()); }); p.on('pageerror', e => errors.push(String(e)));
+await p.goto('http://localhost:3000/login.html');
+await p.fill('input[type=email]', env.ADMIN_EMAIL || 'iwopilucki@icloud.com');
+await p.fill('input[type=password]', env.ADMIN_PASSWORD || '');
+await p.click('button[type=submit]');
+await p.waitForURL(/admin|index/).catch(()=>{});
+await p.goto('http://localhost:3000/admin.html');
+await p.waitForSelector('.photo-card', { timeout: 5000 }).catch(()=>{});
+// upload a test photo
+await p.setInputFiles('input[type=file]', { name: 'deltest.png', mimeType: 'image/png', buffer: Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==', 'base64') });
+await p.click('.upload-form button[type=submit], .upload-form button');
+await p.waitForFunction(() => document.querySelectorAll('.photo-card').length > 0, { timeout: 5000 });
+await p.screenshot({ path: '/tmp/shots/admin/before-delete.png', fullPage: true });
+const before = await p.locator('.photo-card').count();
+p.on('dialog', d => d.accept());
+await p.locator('.photo-delete').first().click();
+await p.waitForTimeout(600);
+const after = await p.locator('.photo-card').count();
+await p.screenshot({ path: '/tmp/shots/admin/after-delete.png', fullPage: true });
+console.log(JSON.stringify({ errors, before, after, deleted: after === before - 1 }));
+await b.close();

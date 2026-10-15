@@ -58,6 +58,25 @@ function renderPhotos(photos) {
       }
     });
     edit.append(input, save);
+    const remove = document.createElement('button');
+    remove.type = 'button';
+    remove.className = 'photo-delete';
+    remove.textContent = 'Delete';
+    remove.addEventListener('click', async () => {
+      if (!window.confirm('Delete this photo permanently? This cannot be undone.')) return;
+      remove.disabled = true;
+      remove.textContent = 'Deleting...';
+      try {
+        const response = await fetch(`/api/photos/${photo.id}`, { method: 'DELETE' });
+        if (!response.ok) throw new Error('delete failed');
+        card.remove();
+        if (!photoList.querySelector('.photo-card')) loadPhotos();
+      } catch {
+        remove.disabled = false;
+        remove.textContent = 'Retry';
+      }
+    });
+    edit.append(remove);
     card.append(image, label, caption, edit);
     photoList.append(card);
   });
